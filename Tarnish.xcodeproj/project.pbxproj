@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F53825681A5BB4BF009E8984 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53825671A5BB4BF009E8984 /* Map.swift */; };
+		F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53825691A5BB59B009E8984 /* MapSpace.swift */; };
+		F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256B1A5C3A5B009E8984 /* Entity.swift */; };
+		F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */; };
 		F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F31A5BA44D00188814 /* AppDelegate.swift */; };
-		F5C805F61A5BA44D00188814 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5C805F51A5BA44D00188814 /* GameScene.sks */; };
-		F5C805F81A5BA44D00188814 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F71A5BA44D00188814 /* GameScene.swift */; };
 		F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F91A5BA44D00188814 /* GameViewController.swift */; };
-		F5C805FD1A5BA44D00188814 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C805FB1A5BA44D00188814 /* Main.storyboard */; };
 		F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5C805FE1A5BA44D00188814 /* Images.xcassets */; };
 		F5C806021A5BA44D00188814 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C806001A5BA44D00188814 /* LaunchScreen.xib */; };
 		F5C8060E1A5BA44D00188814 /* TarnishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8060D1A5BA44D00188814 /* TarnishTests.swift */; };
+		F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806181A5BA50D00188814 /* BaseScene.swift */; };
+		F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806191A5BA50D00188814 /* TitleScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,18 +31,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F53825671A5BB4BF009E8984 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		F53825691A5BB59B009E8984 /* MapSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSpace.swift; sourceTree = "<group>"; };
+		F538256B1A5C3A5B009E8984 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleComponent.swift; sourceTree = "<group>"; };
 		F5C805EE1A5BA44D00188814 /* Tarnish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tarnish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C805F21A5BA44D00188814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C805F31A5BA44D00188814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F5C805F51A5BA44D00188814 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		F5C805F71A5BA44D00188814 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F5C805F91A5BA44D00188814 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		F5C805FC1A5BA44D00188814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5C805FE1A5BA44D00188814 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F5C806011A5BA44D00188814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F5C806071A5BA44D00188814 /* TarnishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TarnishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C8060C1A5BA44D00188814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C8060D1A5BA44D00188814 /* TarnishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarnishTests.swift; sourceTree = "<group>"; };
+		F5C806181A5BA50D00188814 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		F5C806191A5BA50D00188814 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F53825651A5BB3E1009E8984 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				F53825671A5BB4BF009E8984 /* Map.swift */,
+				F53825691A5BB59B009E8984 /* MapSpace.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		F53825661A5BB3F6009E8984 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F538256B1A5C3A5B009E8984 /* Entity.swift */,
+				F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		F5C805E51A5BA44D00188814 = {
 			isa = PBXGroup;
 			children = (
@@ -81,11 +105,11 @@
 		F5C805F01A5BA44D00188814 /* Tarnish */ = {
 			isa = PBXGroup;
 			children = (
+				F53825661A5BB3F6009E8984 /* Entities */,
+				F53825651A5BB3E1009E8984 /* Map */,
+				F5C806171A5BA4C800188814 /* Scenes */,
 				F5C805F31A5BA44D00188814 /* AppDelegate.swift */,
-				F5C805F51A5BA44D00188814 /* GameScene.sks */,
-				F5C805F71A5BA44D00188814 /* GameScene.swift */,
 				F5C805F91A5BA44D00188814 /* GameViewController.swift */,
-				F5C805FB1A5BA44D00188814 /* Main.storyboard */,
 				F5C805FE1A5BA44D00188814 /* Images.xcassets */,
 				F5C806001A5BA44D00188814 /* LaunchScreen.xib */,
 				F5C805F11A5BA44D00188814 /* Supporting Files */,
@@ -116,6 +140,15 @@
 				F5C8060C1A5BA44D00188814 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F5C806171A5BA4C800188814 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F5C806181A5BA50D00188814 /* BaseScene.swift */,
+				F5C806191A5BA50D00188814 /* TitleScene.swift */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +233,6 @@
 			files = (
 				F5C806021A5BA44D00188814 /* LaunchScreen.xib in Resources */,
 				F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */,
-				F5C805F61A5BA44D00188814 /* GameScene.sks in Resources */,
-				F5C805FD1A5BA44D00188814 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +250,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5C805F81A5BA44D00188814 /* GameScene.swift in Sources */,
+				F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */,
+				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */,
+				F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */,
 				F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */,
+				F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */,
+				F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */,
+				F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +280,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F5C805FB1A5BA44D00188814 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5C805FC1A5BA44D00188814 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F5C806001A5BA44D00188814 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -347,6 +375,7 @@
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -357,6 +386,7 @@
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -413,6 +443,7 @@
 				F5C806131A5BA44D00188814 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5C806141A5BA44D00188814 /* Build configuration list for PBXNativeTarget "TarnishTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +452,7 @@
 				F5C806161A5BA44D00188814 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
