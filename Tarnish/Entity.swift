@@ -14,9 +14,13 @@ protocol Updatable {
 
 class Entity : Updatable{
     let exampleComponent : ExampleComponent
+    let graphics : GraphicsComponent
     
-    init(exampleComponent : ExampleComponent) {
+    init(exampleComponent : ExampleComponent, graphics: GraphicsComponent) {
         self.exampleComponent = exampleComponent
+        self.graphics = graphics
+        
+        self.graphics.addListener(self.exampleComponent)
     }
     
     func update() -> Void {

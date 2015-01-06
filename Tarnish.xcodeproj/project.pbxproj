@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51F14001A5C624B00BBC083 /* dwarves.png in Resources */ = {isa = PBXBuildFile; fileRef = F51F13FF1A5C624B00BBC083 /* dwarves.png */; };
+		F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14011A5C662000BBC083 /* GraphicsComponent.swift */; };
+		F51F14051A5C7A8000BBC083 /* GraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */; };
 		F53825681A5BB4BF009E8984 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53825671A5BB4BF009E8984 /* Map.swift */; };
 		F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53825691A5BB59B009E8984 /* MapSpace.swift */; };
 		F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256B1A5C3A5B009E8984 /* Entity.swift */; };
 		F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */; };
+		F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */; };
 		F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F31A5BA44D00188814 /* AppDelegate.swift */; };
 		F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F91A5BA44D00188814 /* GameViewController.swift */; };
 		F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5C805FE1A5BA44D00188814 /* Images.xcassets */; };
@@ -31,10 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F51F13FF1A5C624B00BBC083 /* dwarves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dwarves.png; sourceTree = "<group>"; };
+		F51F14011A5C662000BBC083 /* GraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsComponent.swift; sourceTree = "<group>"; };
+		F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsFactory.swift; sourceTree = "<group>"; };
 		F53825671A5BB4BF009E8984 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		F53825691A5BB59B009E8984 /* MapSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSpace.swift; sourceTree = "<group>"; };
 		F538256B1A5C3A5B009E8984 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleComponent.swift; sourceTree = "<group>"; };
+		F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		F5C805EE1A5BA44D00188814 /* Tarnish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tarnish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C805F21A5BA44D00188814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C805F31A5BA44D00188814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F51F13FE1A5C622B00BBC083 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F51F13FF1A5C624B00BBC083 /* dwarves.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F51F14031A5C7A5F00BBC083 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
 		F53825651A5BB3E1009E8984 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,10 +102,20 @@
 		F53825661A5BB3F6009E8984 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				F5A0C1DB1A5C89EA002BF131 /* Components */,
 				F538256B1A5C3A5B009E8984 /* Entity.swift */,
-				F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		F5A0C1DB1A5C89EA002BF131 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */,
+				F51F14011A5C662000BBC083 /* GraphicsComponent.swift */,
+				F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		F5C805E51A5BA44D00188814 = {
@@ -105,6 +139,7 @@
 		F5C805F01A5BA44D00188814 /* Tarnish */ = {
 			isa = PBXGroup;
 			children = (
+				F51F14031A5C7A5F00BBC083 /* Graphics */,
 				F53825661A5BB3F6009E8984 /* Entities */,
 				F53825651A5BB3E1009E8984 /* Map */,
 				F5C806171A5BA4C800188814 /* Scenes */,
@@ -112,6 +147,7 @@
 				F5C805F91A5BA44D00188814 /* GameViewController.swift */,
 				F5C805FE1A5BA44D00188814 /* Images.xcassets */,
 				F5C806001A5BA44D00188814 /* LaunchScreen.xib */,
+				F51F13FE1A5C622B00BBC083 /* Resources */,
 				F5C805F11A5BA44D00188814 /* Supporting Files */,
 			);
 			path = Tarnish;
@@ -233,6 +269,7 @@
 			files = (
 				F5C806021A5BA44D00188814 /* LaunchScreen.xib in Resources */,
 				F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */,
+				F51F14001A5C624B00BBC083 /* dwarves.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,11 +290,14 @@
 				F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */,
 				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */,
+				F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */,
 				F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */,
 				F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */,
 				F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */,
 				F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */,
+				F51F14051A5C7A8000BBC083 /* GraphicsFactory.swift in Sources */,
 				F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */,
+				F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

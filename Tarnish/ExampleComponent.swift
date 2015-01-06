@@ -8,6 +8,13 @@
 
 import Foundation
 
-class ExampleComponent {
+class ExampleComponent : GraphicsComponentListener{
     
+    func graphicWasAddedToScene(graphic: GraphicsComponent) {
+        println("Graphic was added!")
+    }
+    
+    func graphicWasRemovedFromScene(graphic: GraphicsComponent) {
+        println("Graphic was removed!")
+    }
 }

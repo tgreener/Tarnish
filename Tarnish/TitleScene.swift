@@ -12,10 +12,14 @@ class TitleScene: BaseScene {
     
     var titleNode : SKLabelNode!
     var map : GameMap!
+    var graphicsFactory : GraphicsFactory!
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let space = self.map.mapSpaceAt(0, y: 0, z:0)
         if space.containsEntity() {
+            let entity = space.getEntity()
+            entity?.graphics.removeFromParent()
+            
             space.removeEntity()
             
             if !space.containsEntity() {
@@ -24,10 +28,12 @@ class TitleScene: BaseScene {
         }
         else {
             let comp : ExampleComponent = ExampleComponent()
-            let entity : Entity = Entity(exampleComponent: comp)
+            let graphic: GraphicsComponent = graphicsFactory.createRegularDwarfGraphic()
+            let entity : Entity = Entity(exampleComponent: comp, graphics: graphic)
             space.insertEntity(entity)
             
             if space.containsEntity() {
+                graphic.addTo(self)
                 titleNode.text = "Got the Entity!"
             }
         }
@@ -41,7 +47,9 @@ class TitleScene: BaseScene {
         self.size = self.view!.frame.size
         self.createHelloNode()
         
-        map = GameMap(size: 100)
+        graphicsFactory = GraphicsFactory()
+        graphicsFactory.loadAllTextures()
+        map = GameMap(size: 10)
     }
     
     func createHelloNode() -> Void
