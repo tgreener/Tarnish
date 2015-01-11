@@ -8,26 +8,30 @@
 
 import SpriteKit
 
-protocol EntityContainer {
-    func insertEntity(e: Entity) -> Void
-    func removeEntity() -> Void
-    func containsEntity() -> Bool
-    func getEntity() -> Entity?
-}
+
 
 class MapSpace : EntityContainer {
     var entity : Entity?
+    let position: MapPosition
+    unowned let mapNode : MapNode
     
-    init() {
+    init(position: MapPosition, mapNode: MapNode) {
         self.entity = nil
+        self.position = position
+        self.mapNode = mapNode
     }
     
     func insertEntity(e: Entity) -> Void {
         self.entity = e
+        if(e.graphics.getNode().parent !== self.mapNode) {
+            e.graphics.addTo(self.mapNode)
+        }
     }
     
     func removeEntity() -> Void {
-        self.entity = nil
+        if let entity = self.entity {
+            self.entity = nil
+        }
     }
     
     func containsEntity() -> Bool {

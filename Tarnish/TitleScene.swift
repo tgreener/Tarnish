@@ -11,45 +11,17 @@ import SpriteKit
 class TitleScene: BaseScene {
     
     var titleNode : SKLabelNode!
-    var map : GameMap!
-    var graphicsFactory : GraphicsFactory!
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let space = self.map.mapSpaceAt(0, y: 0, z:0)
-        if space.containsEntity() {
-            let entity = space.getEntity()
-            entity?.graphics.removeFromParent()
-            
-            space.removeEntity()
-            
-            if !space.containsEntity() {
-                titleNode.text = "Removed!"
-            }
-        }
-        else {
-            let comp : ExampleComponent = ExampleComponent()
-            let graphic: GraphicsComponent = graphicsFactory.createRegularDwarfGraphic()
-            let entity : Entity = Entity(exampleComponent: comp, graphics: graphic)
-            space.insertEntity(entity)
-            
-            if space.containsEntity() {
-                graphic.addTo(self)
-                titleNode.text = "Got the Entity!"
-            }
-        }
+        let playScene : PlayScene = PlayScene()
+        let view : SKView = self.view!
+        view.presentScene(playScene)
     }
 
     override func createSceneContents() -> Void
     {
         super.createSceneContents()
-        self.backgroundColor = SKColor.grayColor()
-        self.scaleMode = .AspectFit
-        self.size = self.view!.frame.size
         self.createHelloNode()
-        
-        graphicsFactory = GraphicsFactory()
-        graphicsFactory.loadAllTextures()
-        map = GameMap(size: 10)
     }
     
     func createHelloNode() -> Void

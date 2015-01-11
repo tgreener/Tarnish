@@ -11,9 +11,10 @@ import SpriteKit
 protocol GraphicsComponentListener {
     func graphicWasRemovedFromScene(graphic: GraphicsComponent) -> Void
     func graphicWasAddedToScene(graphic: GraphicsComponent) -> Void
+    func graphicMovedToPosition(graphic: GraphicsComponent, position: MapPosition) -> Void
 }
 
-protocol GraphicsComponent {
+protocol GraphicsComponent : PositionComponentListener {
     func addListener(listener: GraphicsComponentListener) -> Void
     
     func addTo(node: SKNode) -> Void
@@ -23,6 +24,7 @@ protocol GraphicsComponent {
     func insertChildGraphic(graphic: GraphicNode, atIndex: Int) -> Void
     
     func removeFromParent() -> Void
+    func getNode() -> SKNode
 }
 
 class GraphicNode : SKSpriteNode, GraphicsComponent {
@@ -32,16 +34,22 @@ class GraphicNode : SKSpriteNode, GraphicsComponent {
         listeners.append(listener)
     }
     
-    func notifyAddedToScene() {
+    func notify(closure: (GraphicsComponentListener) -> Void) {
         for listener in listeners {
-            listener.graphicWasAddedToScene(self)
+            closure(listener)
         }
     }
     
+    func notifyAddedToScene() {
+        notify({ listener in listener.graphicWasAddedToScene(self) })
+    }
+    
     func notifyRemovedFromScene() {
-        for listener in listeners {
-            listener.graphicWasRemovedFromScene(self)
-        }
+        notify({ listener in listener.graphicWasRemovedFromScene(self) })
+    }
+    
+    func notifyMovedTo(position: MapPosition) {
+        notify({ listener in listener.graphicMovedToPosition(self, position: position)})
     }
     
     func addTo(node: SKNode) {
@@ -72,5 +80,15 @@ class GraphicNode : SKSpriteNode, GraphicsComponent {
         self.insertChild(graphic, atIndex: atIndex)
         graphic.notifyAddedToScene()
 
+    }
+    
+    func mapPositionChanged(position: MapPosition, map: GameMap) {
+        self.runAction(SKAction.moveTo(map.convertToMapNodeSpace(position), duration: 0.5), {
+            self.notifyMovedTo(position)
+        })
+    }
+    
+    func getNode() -> SKNode {
+        return self
     }
 }

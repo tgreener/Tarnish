@@ -15,6 +15,9 @@ class BaseScene : SKScene {
     {
         if !self.contentCreated
         {
+            self.backgroundColor = SKColor.grayColor()
+            self.scaleMode = .AspectFit
+            self.size = self.view!.frame.size
             self.createSceneContents()
         }
     }

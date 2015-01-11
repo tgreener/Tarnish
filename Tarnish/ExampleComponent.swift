@@ -17,4 +17,8 @@ class ExampleComponent : GraphicsComponentListener{
     func graphicWasRemovedFromScene(graphic: GraphicsComponent) {
         println("Graphic was removed!")
     }
+    
+    func graphicMovedToPosition(graphic: GraphicsComponent, position: MapPosition) -> Void {
+        println("Graphic moved to map position!")
+    }
 }

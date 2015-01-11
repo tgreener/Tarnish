@@ -8,43 +8,39 @@
 
 import SpriteKit
 
+func spriteSheetRect(x : UInt, y : UInt, dimension: UInt, sheetWidth: UInt, sheetHeight: UInt) -> CGRect {
+    let floatSheetWidth = CGFloat(sheetWidth)
+    let floatSheetHeight = CGFloat(sheetHeight)
+    let floatDimension = CGFloat(dimension)
+    
+    let sheetPositionX : CGFloat = CGFloat(x) * floatDimension
+    let sheetPositionY : CGFloat = CGFloat(y) * floatDimension
+    let spriteSize = CGSize(width: floatDimension / floatSheetWidth, height: floatDimension / floatSheetHeight)
+    let spriteOrigin = CGPoint(x: sheetPositionX / floatSheetWidth, y: sheetPositionY / floatSheetHeight)
+    
+    return CGRect(origin: spriteOrigin, size: spriteSize)
+}
+
+
 class GraphicsFactory {
     // Load methods
     func loadAllTextures() {
-        loadDwarfAtlas()
-    }
-    
-    func loadDwarfAtlas() {
-        self.dwarfAtlas = SKTexture(imageNamed: "dwarves.png")
-        self.regularDwarfTexture = SKTexture(rect: self.dwarfAtlasPositions[DwarfType.Regular]!, inTexture: self.dwarfAtlas)
-    }
-    
-    // Factory methods
-    func createRegularDwarfGraphic() -> GraphicNode {
-        let result = GraphicNode(texture: self.regularDwarfTexture)
-        result.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        beardlingFactory.loadBeardlingAtlas()
+        beardlingFactory.loadBeardlingTextures()
         
-        return result
+        terrainFactory.loadAtlas()
+        terrainFactory.loadTerrain()
     }
     
-    
-    var dwarfAtlas : SKTexture!
-    var regularDwarfTexture : SKTexture!
-    
-    enum DwarfType {
-        case Regular
+    func createRegularBeardlingGraphic() -> BeardlingGraphicComponent {
+        return beardlingFactory.createRegularBeardlingGraphic();
     }
-    let dwarfWidth : CGFloat = 16.0 / 192.0
-    let dwarfHeight: CGFloat = 16.0 / 352.0
-    let dwarfAtlasPositions : [DwarfType: CGRect]
     
-    init() {
-        dwarfAtlas = nil
-        regularDwarfTexture = nil
-        
-        // Positions in atlas for all dwarf sprites
-        dwarfAtlasPositions = [
-            DwarfType.Regular : CGRect(origin: CGPoint(x: 16.0/192, y: (352-16)/352), size: CGSize(width: dwarfWidth, height: dwarfHeight))
-        ]
+    let beardlingFactory : BeardlingGraphicsFactory
+    let terrainFactory   : TerrainGraphicsFactory
+    
+    init(beardlingFactory: BeardlingGraphicsFactory, terrainFactory: TerrainGraphicsFactory) {
+        self.beardlingFactory = beardlingFactory
+        self.terrainFactory = terrainFactory
     }
 }
