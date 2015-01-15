@@ -34,6 +34,13 @@ class PlayScene : BaseScene {
         
         let building = entityFactory.createNormalHouseBright()
         building.position.setTo(MapPosition(x: mapSize / 2, y: mapSize / 2, z: 0))
+        
+        let astar : AStar = AStarImpl(start: MapPosition(x: 0, y: 0, z: 0), end: MapPosition(x: mapSize - 1, y: mapSize - 1, z: 0), map: map)
+        let path = astar.calculatePath()
+        
+        if path != nil {
+            for position in path! { println("\(position)") }
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {

@@ -12,6 +12,7 @@ protocol GameMap {
     func mapSpaceAt(x : UInt, y : UInt, z : UInt) -> MapSpace
     func addMapTo(scene: SKScene) -> Void
     func convertToMapNodeSpace(mapPosition: MapPosition) -> CGPoint
+    func getPathableNeighbors(position: MapPosition) -> [MapPosition]
 }
 
 class GameMapImpl : GameMap {
@@ -21,6 +22,8 @@ class GameMapImpl : GameMap {
 
     init(size : UInt, terrainGenerator : TerrainGenerator) {
         self.size = size
+        if self.size > 1024 { self.size = 1024 } // Capped to ensure all MapSpace hashes are unique (and performance, that big of a map is absurd!)
+        
         mapNode = MapNode(mapSize: self.size)
         
         let intSize : Int = Int(size)
@@ -64,6 +67,36 @@ class GameMapImpl : GameMap {
         self.mapNode.setScale(self.mapNode.minimumScale)
         
         scene.addChild(self.mapNode)
+    }
+    
+    func isPathablePosition(x: Int, y: Int, z: Int) -> Bool {
+        if x < 0 || UInt(x) >= self.size { return false }
+        if y < 0 || UInt(y) >= self.size { return false }
+        if z < 0 || UInt(z) >= self.size { return false }
+
+        return mapSpaceAt(UInt(x), y: UInt(y), z: UInt(z)).isPathable()
+    }
+    
+    func getPathableNeighbors(position: MapPosition) -> [MapPosition] {
+        var result = [MapPosition]()
+        
+        if isPathablePosition(Int(position.x) - 1, y: Int(position.y), z: Int(position.z)) {
+            result.append(MapPosition(x: position.x - 1, y: position.y, z: position.z))
+        }
+        
+        if isPathablePosition(Int(position.x) + 1, y: Int(position.y), z: Int(position.z)) {
+            result.append(MapPosition(x: position.x + 1, y: position.y, z: position.z))
+        }
+        
+        if isPathablePosition(Int(position.x), y: Int(position.y) - 1, z: Int(position.z)) {
+            result.append(MapPosition(x: position.x, y: position.y - 1, z: position.z))
+        }
+        
+        if isPathablePosition(Int(position.x), y: Int(position.y) + 1, z: Int(position.z)) {
+            result.append(MapPosition(x: position.x, y: position.y + 1, z: position.z))
+        }
+        
+        return result
     }
     
     func convertToMapNodeSpace(mapPosition: MapPosition) -> CGPoint {

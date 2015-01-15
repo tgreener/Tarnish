@@ -35,6 +35,8 @@
 		F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806181A5BA50D00188814 /* BaseScene.swift */; };
 		F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806191A5BA50D00188814 /* TitleScene.swift */; };
 		F5E4B0321A621E61006B4360 /* BuildingGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */; };
+		F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2024D1A675EAA00E143BA /* AStar.swift */; };
+		F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F202511A6767F300E143BA /* PriorityQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		F5C806181A5BA50D00188814 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F5C806191A5BA50D00188814 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsFactory.swift; sourceTree = "<group>"; };
+		F5F2024D1A675EAA00E143BA /* AStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		F5F202511A6767F300E143BA /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +189,9 @@
 		F5C805F01A5BA44D00188814 /* Tarnish */ = {
 			isa = PBXGroup;
 			children = (
+				F5F2024F1A67677200E143BA /* Library */,
 				F51F14031A5C7A5F00BBC083 /* Graphics */,
+				F5F2024C1A675E8E00E143BA /* AI */,
 				F53825661A5BB3F6009E8984 /* Entities */,
 				F53825651A5BB3E1009E8984 /* Map */,
 				F5C806171A5BA4C800188814 /* Scenes */,
@@ -232,6 +238,30 @@
 				F528866B1A5CFC5100DF976F /* PlayScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		F5F2024C1A675E8E00E143BA /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2024D1A675EAA00E143BA /* AStar.swift */,
+			);
+			name = AI;
+			sourceTree = "<group>";
+		};
+		F5F2024F1A67677200E143BA /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F5F202501A67677C00E143BA /* Collections */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		F5F202501A67677C00E143BA /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				F5F202511A6767F300E143BA /* PriorityQueue.swift */,
+			);
+			name = Collections;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,7 +369,9 @@
 				F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */,
 				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */,
+				F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */,
 				F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */,
+				F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */,
 				F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */,
 				F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */,
 				F52886741A619B1500DF976F /* BeardlingGraphicComponent.swift in Sources */,

@@ -14,8 +14,10 @@ protocol TerrainSpace {
 
 class Terrain : TerrainSpace {
     let sprite : SKSpriteNode
+    let blocksPathing : Bool
     
-    init(texture: SKTexture) {
+    init(texture: SKTexture, blocksPathing: Bool = false) {
+        self.blocksPathing = blocksPathing
         sprite = SKSpriteNode(texture: texture)
         sprite.blendMode = SKBlendMode.Alpha
         sprite.anchorPoint = CGPointZero

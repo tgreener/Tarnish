@@ -8,29 +8,6 @@
 
 import Foundation
 
-struct MapPosition : Equatable {
-    let x : UInt
-    let y : UInt
-    let z : UInt
-    
-    init(x: UInt, y: UInt, z: UInt) {
-        self.x = x
-        self.y = y
-        self.z = z
-    }
-    
-    init(position: MapPosition) {
-        self.x = position.x
-        self.y = position.y
-        self.z = position.z
-    }
-}
-
-
-func ==(lhs: MapPosition, rhs: MapPosition) -> Bool {
-    return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
-}
-
 protocol PositionComponent : class {
     func addListener(listener: PositionComponentListener) -> Void
     
