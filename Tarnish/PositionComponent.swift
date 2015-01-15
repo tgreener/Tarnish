@@ -33,21 +33,16 @@ func ==(lhs: MapPosition, rhs: MapPosition) -> Bool {
 
 protocol PositionComponent : class {
     func addListener(listener: PositionComponentListener) -> Void
-    var mapPosition : MapPosition { get set }
+    
+    func moveTo(position: MapPosition) -> Void
+    func setTo(position : MapPosition) -> Void
+    
     var entity      : Entity!     { get set }
+    var mapPosition : MapPosition { get }
 }
 
 class PositionComponentImpl : PositionComponent {
-    var mapPosition : MapPosition = MapPosition(x: 0, y: 0, z: 0){
-        didSet(previousPosition) {
-            if !assumeNewPosition(self.mapPosition, previousPosition: previousPosition) {
-                self.mapPosition = previousPosition
-            }
-            else {
-                notifyListenersPositionChanged()
-            }
-        }
-    }
+    var mapPosition : MapPosition = MapPosition(x: 0, y: 0, z: 0)
     
     var listeners: [PositionComponentListener] = [PositionComponentListener]()
     weak var entity : Entity!
@@ -57,10 +52,9 @@ class PositionComponentImpl : PositionComponent {
         self.map = map
     }
     
-    func notifyListenersPositionChanged() {
+    func notify(closure: (PositionComponentListener) -> Void) {
         for listener in listeners {
-            let position = MapPosition(position: self.mapPosition)
-            listener.mapPositionChanged(position, map: self.map)
+            closure(listener)
         }
     }
     
@@ -73,6 +67,7 @@ class PositionComponentImpl : PositionComponent {
                 currentSpace.removeEntity()
             }
             destinationSpace.insertEntity(self.entity)
+            self.mapPosition = newPosition
             
             return true
         }
@@ -82,9 +77,21 @@ class PositionComponentImpl : PositionComponent {
     func addListener(listener: PositionComponentListener) -> Void {
         self.listeners.append(listener)
     }
+    
+    func moveTo(position: MapPosition) -> Void {
+        if assumeNewPosition(position, previousPosition: self.mapPosition) {
+            notify({listener in listener.positionMovedTo(self.mapPosition, map: self.map) })
+        }
+    }
 
+    func setTo(position: MapPosition) {
+        if assumeNewPosition(position, previousPosition: self.mapPosition) {
+            notify({listener in listener.positionSetTo(self.mapPosition, map: self.map) })
+        }
+    }
 }
 
 protocol PositionComponentListener {
-    func mapPositionChanged(position: MapPosition, map: GameMap) -> Void
+    func positionMovedTo(position: MapPosition, map: GameMap) -> Void
+    func positionSetTo(position: MapPosition, map: GameMap) -> Void
 }

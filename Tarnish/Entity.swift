@@ -12,20 +12,21 @@ protocol Updatable {
     func update() -> Void
 }
 
-protocol EntityContainer {
-    func insertEntity(e: Entity) -> Void
-    func removeEntity() -> Void
-    func containsEntity() -> Bool
-    func getEntity() -> Entity?
-}
-
 class Entity : Updatable{
     let exampleComponent : ExampleComponent
     let graphics : GraphicsComponent
-    let position : PositionComponent!
+    let position : PositionComponent
+    let character: CharacterComponent?
     
-    init(exampleComponent : ExampleComponent, graphics: GraphicsComponent, position: PositionComponent) {
+    init(exampleComponent : ExampleComponent,
+         graphics: GraphicsComponent,
+         position: PositionComponent,
+         physical: PhysicalComponent,
+         character: CharacterComponent?
+        )
+    {
         self.exampleComponent = exampleComponent
+        self.character = character
         self.graphics = graphics
         self.position = position
         self.position.entity = self

@@ -28,19 +28,29 @@ class GraphicsFactory {
         beardlingFactory.loadBeardlingAtlas()
         beardlingFactory.loadBeardlingTextures()
         
-        terrainFactory.loadAtlas()
         terrainFactory.loadTerrain()
+        buildingFactory.loadBuildings()
     }
     
     func createRegularBeardlingGraphic() -> BeardlingGraphicComponent {
         return beardlingFactory.createRegularBeardlingGraphic();
     }
     
+    func createRegularBraidlingGraphic() -> BeardlingGraphicComponent {
+        return beardlingFactory.createRegularBraidlingGraphic()
+    }
+    
+    func createBuildingGraphic(type: BuildingTextureTypes) -> BuildingGraphicComponent {
+        return buildingFactory.createBuildingGraphic(type)
+    }
+    
     let beardlingFactory : BeardlingGraphicsFactory
     let terrainFactory   : TerrainGraphicsFactory
+    let buildingFactory   : BuildingGraphicsFactory
     
-    init(beardlingFactory: BeardlingGraphicsFactory, terrainFactory: TerrainGraphicsFactory) {
+    init(beardlingFactory: BeardlingGraphicsFactory, terrainFactory: TerrainGraphicsFactory, buildingFactory: BuildingGraphicsFactory) {
         self.beardlingFactory = beardlingFactory
         self.terrainFactory = terrainFactory
+        self.buildingFactory = buildingFactory
     }
 }

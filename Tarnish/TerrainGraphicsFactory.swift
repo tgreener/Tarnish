@@ -18,39 +18,35 @@ enum TerrainTextureType {
 }
 
 class TerrainGraphicsFactory {
-    var terrainAtlas            : SKTexture!
+    var terrainAtlas            : SKTexture
     let terrainAtlasPositions   : [TerrainTextureType: CGRect]
     var terrainTextures         : [TerrainTextureType: SKTexture] = [TerrainTextureType: SKTexture]()
     
     let terrainSheetWidth       : UInt = 256
     let terrainSheetHeight      : UInt = 256
     let terrainTextureDimension : UInt = 8
-    let totalTextures           : UInt = 2
     
-    init() {
-        let grassEmptyRect       = spriteSheetRect(0, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
-        let grassDecoration1Rect = spriteSheetRect(1, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
+    init(atlas: SKTexture) {
+        self.terrainAtlas = atlas
+        let grassEmptyRect        = spriteSheetRect( 0, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
+        let grassDecoration1Rect  = spriteSheetRect( 1, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
         
         terrainAtlasPositions = [
             TerrainTextureType.GrassEmpty       : grassEmptyRect,
-            TerrainTextureType.GrassDecoration1 : grassDecoration1Rect
+            TerrainTextureType.GrassDecoration1 : grassDecoration1Rect,
         ]
     }
-    
-    func loadAtlas() {
-        terrainAtlas = SKTexture(imageNamed: "micro_tileset.png")
-    }
-    
+
     func loadTerrain() {
-        if let atlas = self.terrainAtlas {
-            var count : UInt = 0
-            for (type, rect) in terrainAtlasPositions {
-                let texture = SKTexture(rect: rect, inTexture: atlas)
-                terrainTextures[type] = texture
-                texture.filteringMode = SKTextureFilteringMode.Nearest
-                count += 1
-                notify({ listener in listener.terrainTextureLoaded(count, ofTotal: self.totalTextures) })
-            }
+        var count : UInt  = 0
+        let totalTextures = UInt(terrainAtlasPositions.count)
+        
+        for (type, rect) in terrainAtlasPositions {
+            let texture = SKTexture(rect: rect, inTexture: self.terrainAtlas)
+            terrainTextures[type] = texture
+            texture.filteringMode = SKTextureFilteringMode.Nearest
+            count += 1
+            notify({ listener in listener.terrainTextureLoaded(count, ofTotal: totalTextures) })
         }
     }
     

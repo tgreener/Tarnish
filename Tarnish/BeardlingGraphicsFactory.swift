@@ -18,34 +18,53 @@ enum BeardlingTextureType {
 class BeardlingGraphicsFactory {
     var beardlingAtlas : SKTexture!
     var beardlingTextures : [BeardlingTextureType: SKTexture] = [BeardlingTextureType: SKTexture]()
+    var braidlingTextures : [BeardlingTextureType: SKTexture] = [BeardlingTextureType: SKTexture]()
     
     let beardlingSheetWidth : UInt = 64
-    let beardlingSheetHeight: UInt = 16
+    let beardlingSheetHeight: UInt = 32
     let beardlingSpriteDimension : UInt = 16
     let beardlingAtlasPositions : [BeardlingTextureType: CGRect]
+    let braidlingAtlasPositions : [BeardlingTextureType: CGRect]
     
     init() {
-        let idle1Rect = spriteSheetRect(0, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let idle2Rect = spriteSheetRect(1, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let run1Rect  = spriteSheetRect(2, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let run2Rect  = spriteSheetRect(3, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let beardlingIdle1Rect = spriteSheetRect(0, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let beardlingIdle2Rect = spriteSheetRect(1, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let beardlingRun1Rect  = spriteSheetRect(2, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let beardlingRun2Rect  = spriteSheetRect(3, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
         
         beardlingAtlasPositions = [
-            BeardlingTextureType.Idle1 : idle1Rect,
-            BeardlingTextureType.Idle2 : idle2Rect,
-            BeardlingTextureType.Run1  : run1Rect,
-            BeardlingTextureType.Run2  : run2Rect
+            BeardlingTextureType.Idle1 : beardlingIdle1Rect,
+            BeardlingTextureType.Idle2 : beardlingIdle2Rect,
+            BeardlingTextureType.Run1  : beardlingRun1Rect,
+            BeardlingTextureType.Run2  : beardlingRun2Rect
+        ]
+        
+        let braidlingIdle1Rect = spriteSheetRect(0, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let braidlingIdle2Rect = spriteSheetRect(1, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let braidlingRun1Rect  = spriteSheetRect(2, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let braidlingRun2Rect  = spriteSheetRect(3, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        
+        braidlingAtlasPositions = [
+            BeardlingTextureType.Idle1 : braidlingIdle1Rect,
+            BeardlingTextureType.Idle2 : braidlingIdle2Rect,
+            BeardlingTextureType.Run1  : braidlingRun1Rect,
+            BeardlingTextureType.Run2  : braidlingRun2Rect
         ]
     }
     
     func createRegularBeardlingGraphic() -> BeardlingGraphicComponent {
         let result = BeardlingGraphicComponent(beardlingTextures: self.beardlingTextures)
-        result.anchorPoint = CGPoint(x: 0, y: 0)
-        return result;
+        result.anchorPoint = CGPointZero
+        return result
+    }
+    
+    func createRegularBraidlingGraphic() -> BeardlingGraphicComponent {
+        let result = BraidlingGraphicComponent(beardlingTextures: self.braidlingTextures)
+        return result
     }
     
     func loadBeardlingAtlas() {
-        self.beardlingAtlas = SKTexture(imageNamed: "beardling_sheet.png")
+        self.beardlingAtlas = SKTexture(imageNamed: "beardling_sheet_v3.png")
     }
     
     func loadBeardlingTextures() {
@@ -53,6 +72,12 @@ class BeardlingGraphicsFactory {
             for (type, rect) in beardlingAtlasPositions {
                 let texture = SKTexture(rect: rect, inTexture: atlas)
                 beardlingTextures[type] = texture
+                texture.filteringMode = SKTextureFilteringMode.Nearest
+            }
+            
+            for (type, rect) in braidlingAtlasPositions {
+                let texture = SKTexture(rect: rect, inTexture: atlas)
+                braidlingTextures[type] = texture
                 texture.filteringMode = SKTextureFilteringMode.Nearest
             }
         }

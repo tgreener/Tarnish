@@ -13,5 +13,12 @@ protocol TerrainSpace {
 }
 
 class Terrain : TerrainSpace {
+    let sprite : SKSpriteNode
     
+    init(texture: SKTexture) {
+        sprite = SKSpriteNode(texture: texture)
+        sprite.blendMode = SKBlendMode.Alpha
+        sprite.anchorPoint = CGPointZero
+        sprite.setScale(2)
+    }
 }
