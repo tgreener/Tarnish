@@ -54,7 +54,6 @@ class BeardlingGraphicsFactory {
     
     func createRegularBeardlingGraphic() -> BeardlingGraphicComponent {
         let result = BeardlingGraphicComponent(beardlingTextures: self.beardlingTextures)
-        result.anchorPoint = CGPointZero
         return result
     }
     

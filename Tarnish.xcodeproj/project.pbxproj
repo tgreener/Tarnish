@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F510A97B1A661AE400E647BC /* beardling_sheet_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */; };
+		F515C61D1A6807AC003BB084 /* AIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515C61C1A6807AC003BB084 /* AIComponent.swift */; };
 		F51F14001A5C624B00BBC083 /* dwarves.png in Resources */ = {isa = PBXBuildFile; fileRef = F51F13FF1A5C624B00BBC083 /* dwarves.png */; };
 		F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14011A5C662000BBC083 /* GraphicsComponent.swift */; };
 		F51F14051A5C7A8000BBC083 /* GraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */; };
@@ -20,6 +21,7 @@
 		F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256B1A5C3A5B009E8984 /* Entity.swift */; };
 		F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */; };
 		F562AA5E1A620FA6002080F1 /* TerrainGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F562AA5D1A620FA6002080F1 /* TerrainGenerator.swift */; };
+		F56EB2A11A68A60600C8BDCC /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EB2A01A68A60600C8BDCC /* Notifier.swift */; };
 		F58472331A664CF6008D1449 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58472321A664CF6008D1449 /* CharacterComponent.swift */; };
 		F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58472341A664D72008D1449 /* PhysicalComponent.swift */; };
 		F59061761A61F3C200BE68EA /* TerrainGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59061751A61F3C200BE68EA /* TerrainGraphicsFactory.swift */; };
@@ -51,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beardling_sheet_v3.png; sourceTree = "<group>"; };
+		F515C61C1A6807AC003BB084 /* AIComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIComponent.swift; sourceTree = "<group>"; };
 		F51F13FF1A5C624B00BBC083 /* dwarves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dwarves.png; sourceTree = "<group>"; };
 		F51F14011A5C662000BBC083 /* GraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsComponent.swift; sourceTree = "<group>"; };
 		F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsFactory.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		F538256B1A5C3A5B009E8984 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleComponent.swift; sourceTree = "<group>"; };
 		F562AA5D1A620FA6002080F1 /* TerrainGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerrainGenerator.swift; sourceTree = "<group>"; };
+		F56EB2A01A68A60600C8BDCC /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		F58472321A664CF6008D1449 /* CharacterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		F58472341A664D72008D1449 /* PhysicalComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalComponent.swift; sourceTree = "<group>"; };
 		F59061751A61F3C200BE68EA /* TerrainGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerrainGraphicsFactory.swift; sourceTree = "<group>"; };
@@ -145,6 +149,14 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		F56EB29F1A68A5F100C8BDCC /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				F56EB2A01A68A60600C8BDCC /* Notifier.swift */,
+			);
+			name = Communication;
+			sourceTree = "<group>";
+		};
 		F592D9C91A61B9E000F0EC6D /* Terrain */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +176,7 @@
 				F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */,
 				F58472321A664CF6008D1449 /* CharacterComponent.swift */,
 				F58472341A664D72008D1449 /* PhysicalComponent.swift */,
+				F515C61C1A6807AC003BB084 /* AIComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -251,6 +264,7 @@
 		F5F2024F1A67677200E143BA /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				F56EB29F1A68A5F100C8BDCC /* Communication */,
 				F5F202501A67677C00E143BA /* Collections */,
 			);
 			name = Library;
@@ -313,6 +327,7 @@
 				TargetAttributes = {
 					F5C805ED1A5BA44D00188814 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 6LP8SH262R;
 					};
 					F5C806061A5BA44D00188814 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -383,10 +398,12 @@
 				F52886701A5D00A200DF976F /* EntityFactory.swift in Sources */,
 				F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */,
 				F5328BD41A61F2AA0022239A /* BeardlingGraphicsFactory.swift in Sources */,
+				F56EB2A11A68A60600C8BDCC /* Notifier.swift in Sources */,
 				F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */,
 				F51F14051A5C7A8000BBC083 /* GraphicsFactory.swift in Sources */,
 				F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */,
 				F5AC73C11A638D29008D2DC5 /* BuildingGraphicsComponent.swift in Sources */,
+				F515C61D1A6807AC003BB084 /* AIComponent.swift in Sources */,
 				F528866C1A5CFC5100DF976F /* PlayScene.swift in Sources */,
 				F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */,
 				F562AA5E1A620FA6002080F1 /* TerrainGenerator.swift in Sources */,
@@ -504,9 +521,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -515,9 +535,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

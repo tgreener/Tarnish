@@ -10,9 +10,13 @@ import SpriteKit
 
 protocol GameMap {
     func mapSpaceAt(x : UInt, y : UInt, z : UInt) -> MapSpace
+    func mapSpaceAt(position: MapPosition) -> MapSpace
+    
     func addMapTo(scene: SKScene) -> Void
     func convertToMapNodeSpace(mapPosition: MapPosition) -> CGPoint
     func getPathableNeighbors(position: MapPosition) -> [MapPosition]
+    
+    var size : UInt { get }
 }
 
 class GameMapImpl : GameMap {

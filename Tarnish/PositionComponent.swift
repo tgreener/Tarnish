@@ -56,19 +56,21 @@ class PositionComponentImpl : PositionComponent {
     }
     
     func moveTo(position: MapPosition) -> Void {
-        if assumeNewPosition(position, previousPosition: self.mapPosition) {
-            notify({listener in listener.positionMovedTo(self.mapPosition, map: self.map) })
+        let previousPosition = self.mapPosition
+        if assumeNewPosition(position, previousPosition: previousPosition) {
+            notify({listener in listener.positionMovedTo(self.mapPosition, from: previousPosition, map: self.map) })
         }
     }
 
     func setTo(position: MapPosition) {
-        if assumeNewPosition(position, previousPosition: self.mapPosition) {
-            notify({listener in listener.positionSetTo(self.mapPosition, map: self.map) })
+        let previousPosition = self.mapPosition
+        if assumeNewPosition(position, previousPosition: previousPosition) {
+            notify({listener in listener.positionSetTo(self.mapPosition, from: previousPosition, map: self.map) })
         }
     }
 }
 
 protocol PositionComponentListener {
-    func positionMovedTo(position: MapPosition, map: GameMap) -> Void
-    func positionSetTo(position: MapPosition, map: GameMap) -> Void
+    func positionMovedTo(position: MapPosition, from: MapPosition, map: GameMap) -> Void
+    func positionSetTo(position: MapPosition, from: MapPosition, map: GameMap) -> Void
 }

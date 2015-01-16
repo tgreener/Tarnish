@@ -22,25 +22,30 @@ class EntityFactoryImpl : EntityFactory {
         self.graphics = graphics
         self.map = map
     }
-
-    func createBeardling() -> Entity {
+    
+    func createCharacter(graphics : BeardlingGraphicComponent) -> Entity {
+        let position = PositionComponentImpl(map: self.map)
+        let ai = AIComponentImpl(map: self.map, positionComponent: position)
+        position.addListener(ai)
+        graphics.addListener(ai)
+        ai.addListener(graphics)
+        
         return EntityBuilder.entity()
             .with(exampleComponent  : ExampleComponent())
-            .with(graphicsComponent : self.graphics.createRegularBeardlingGraphic())
-            .with(positionComponent : PositionComponentImpl(map: self.map))
+            .with(graphicsComponent : graphics)
+            .with(positionComponent : position)
             .with(physicalComponent : PhysicalComponentImpl(blocksPathing: true))
             .with(characterComponent: nil)
+            .with(aiComponent: ai)
             .create()
+    }
+
+    func createBeardling() -> Entity {
+        return createCharacter(self.graphics.createRegularBeardlingGraphic())
     }
     
     func createBraidling() -> Entity {
-        return EntityBuilder.entity()
-            .with(exampleComponent  : ExampleComponent())
-            .with(graphicsComponent : self.graphics.createRegularBraidlingGraphic())
-            .with(positionComponent : PositionComponentImpl(map: self.map))
-            .with(physicalComponent : PhysicalComponentImpl(blocksPathing: true))
-            .with(characterComponent: nil)
-            .create()
+        return createCharacter(self.graphics.createRegularBraidlingGraphic())
     }
     
     func createNormalHouseBright() -> Entity {
@@ -59,6 +64,7 @@ class EntityBuilder {
     var position : PositionComponent?
     var physical : PhysicalComponent?
     var character: CharacterComponent?
+    var ai       : AIComponent?
     
     class func entity() -> EntityBuilder {
         return EntityBuilder()
@@ -89,12 +95,17 @@ class EntityBuilder {
         return self
     }
     
+    func with(aiComponent a: AIComponent) -> EntityBuilder {
+        ai = a
+        return self
+    }
+    
     func validate() -> Bool {
         return example != nil && graphic != nil && position != nil && physical != nil
     }
     
     func create() -> Entity {
         assert(validate(), "Entity validation failed!")
-        return Entity(exampleComponent: example!, graphics: graphic!, position: position!, physical: physical!, character: character)
+        return Entity(exampleComponent: example!, graphics: graphic!, position: position!, physical: physical!, character: character, ai: ai)
     }
 }

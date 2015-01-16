@@ -8,15 +8,17 @@
 
 import SpriteKit
 
-class BeardlingGraphicComponent : GraphicNode {
+class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
     let idleTextures : [SKTexture]
     let runTextures  : [SKTexture]
     let idleAnimationAction : SKAction!
     let runAnimationAction  : SKAction!
     var currentAction : SKAction = SKAction() {
         didSet {
-            self.removeActionForKey("BEARDLING_ANIMATION")
-            self.runAction(currentAction, withKey: "BEARDLING_ANIMATION")
+            if oldValue !== currentAction {
+                self.removeActionForKey("BEARDLING_ANIMATION")
+                self.runAction(currentAction, withKey: "BEARDLING_ANIMATION")
+            }
         }
     }
     
@@ -31,7 +33,7 @@ class BeardlingGraphicComponent : GraphicNode {
         runAnimationAction  = createRunAnimationAction()
         currentAction = idleAnimationAction
         
-        self.runAction(idleAnimationAction)
+        self.runAction(idleAnimationAction, withKey: "BEARDLING_ANIMATION")
         self.anchorPoint = CGPointZero
         self.userInteractionEnabled = true
     }
@@ -44,16 +46,27 @@ class BeardlingGraphicComponent : GraphicNode {
         return SKAction.repeatActionForever(SKAction.animateWithTextures(runTextures, timePerFrame: 0.2))
     }
     
-    override func notifyMovedTo(position: MapPosition) {
-        currentAction = self.idleAnimationAction
-        super.notifyMovedTo(position)
-    }
-    
-    override func positionMovedTo(position: MapPosition, map: GameMap) {
+    override func positionMovedTo(position: MapPosition, from: MapPosition, map: GameMap) {
         if self.position != map.convertToMapNodeSpace(position) {
-            super.positionMovedTo(position, map: map)
+            super.positionMovedTo(position, from: from, map: map)
+            
+            if Int(from.x) - Int(position.x) > 0 {
+                if self.xScale > 0 {
+                    self.anchorPoint = CGPoint(x: 1, y: 0)
+                    self.xScale = self.xScale * -1
+                }
+            }
+            else if self.xScale < 0 && Int(from.x) < Int(position.x) {
+                self.xScale = self.xScale * -1
+                self.anchorPoint = CGPointZero
+            }
+            
             currentAction = self.runAnimationAction
         }
+    }
+    
+    func reachedGoal() {
+        currentAction = self.idleAnimationAction
     }
 }
 

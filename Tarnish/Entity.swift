@@ -18,16 +18,19 @@ class Entity : Updatable{
     let position : PositionComponent
     let physics  : PhysicalComponent
     let character: CharacterComponent?
+    let ai       : AIComponent?
     
     init(exampleComponent : ExampleComponent,
-         graphics: GraphicsComponent,
-         position: PositionComponent,
-         physical: PhysicalComponent,
-         character: CharacterComponent?
+        graphics: GraphicsComponent,
+        position: PositionComponent,
+        physical: PhysicalComponent,
+        character: CharacterComponent?,
+        ai       : AIComponent?
         )
     {
         self.exampleComponent = exampleComponent
         self.character = character
+        self.ai       = ai
         self.physics  = physical
         self.graphics = graphics
         self.position = position

@@ -9,13 +9,15 @@
 import SpriteKit
 
 class PlayScene : BaseScene {
-    let mapSize : UInt = 10
+    let mapSize : UInt = 8 // 64 should be max map size, I think
     var map : GameMap!
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
     
     var beardling : Entity!
     var braidling : Entity!
+    
+    var previousTime : NSTimeInterval = 0
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -35,16 +37,24 @@ class PlayScene : BaseScene {
         let building = entityFactory.createNormalHouseBright()
         building.position.setTo(MapPosition(x: mapSize / 2, y: mapSize / 2, z: 0))
         
-        let astar : AStar = AStarImpl(start: MapPosition(x: 0, y: 0, z: 0), end: MapPosition(x: mapSize - 1, y: mapSize - 1, z: 0), map: map)
-        let path = astar.calculatePath()
+        let building2 = entityFactory.createNormalHouseBright()
+        building2.position.setTo(MapPosition(x: mapSize / 3, y: mapSize / 3, z: 0))
         
-        if path != nil {
-            for position in path! { println("\(position)") }
-        }
+        let building3 = entityFactory.createNormalHouseBright()
+        building3.position.setTo(MapPosition(x: mapSize / 5, y: mapSize / 5, z: 0))
+        
+        var previousTime = CFAbsoluteTimeGetCurrent()
     }
     
     override func update(currentTime: NSTimeInterval) {
-        // Nope
+        let dt = currentTime - previousTime
+        if let ai = beardling.ai {
+            ai.update(dt)
+        }
+        if let ai = braidling.ai {
+            ai.update(dt)
+        }
+        previousTime = currentTime
     }
     
     func loadData() {
@@ -65,15 +75,11 @@ class PlayScene : BaseScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let beardX = beardling.position.mapPosition.x
-        let beardY = beardling.position.mapPosition.y
-        
-        let braidX = braidling.position.mapPosition.x
-        let braidY = braidling.position.mapPosition.y
-        
-        if beardX < mapSize - 1 && braidX < mapSize - 1 {
-            beardling.position.moveTo(MapPosition(x: beardX + 1, y: beardY + 1, z: 0))
-            braidling.position.moveTo(MapPosition(x: braidX + 1, y: braidY, z: 0))
-        }
+//        let braidX = braidling.position.mapPosition.x
+//        let braidY = braidling.position.mapPosition.y
+//        
+//        if braidX < mapSize - 1 {
+//            braidling.position.moveTo(MapPosition(x: braidX + 1, y: braidY, z: 0))
+//        }
     }
 }
