@@ -31,16 +31,16 @@ class GameMapImpl : GameMap {
         mapNode = MapNode(mapSize: self.size)
         
         let intSize : Int = Int(size)
-        container = [MapSpace]()
-        container.reserveCapacity(intSize * intSize * intSize)
+        let arraySize = intSize * intSize // intSize, for z levels
+        container = [MapSpace](count: arraySize, repeatedValue: MapSpace(position: MapPosition(x: 0, y: 0, z: 0), mapNode: self.mapNode))
         
-        for var z : UInt = 0; z < size; z++ {
+        for var z : UInt = 0; z < 1 /* size if I ever implement the z levels */; z++ {
             for var y : UInt = 0; y < size; y++ {
                 for var x : UInt = 0; x < size; x++ {
                     let position : MapPosition = MapPosition(x: x, y: y, z: z)
-                    self.container.append(MapSpace(position: position, mapNode: self.mapNode))
+                    self.container[getArrayIndex(position)] = MapSpace(position: position, mapNode: self.mapNode)
                     if z == UInt(0) {
-                        self.container[getArrayIndex(x, y: y, z: z)].terrain = terrainGenerator.generateTerrainSpace()
+                        self.container[getArrayIndex(position)].terrain = terrainGenerator.generateTerrainSpace()
                     }
                 }
             }
@@ -62,6 +62,14 @@ class GameMapImpl : GameMap {
     func mapSpaceAt(x: UInt, y: UInt, z : UInt) -> MapSpace {
         assert(x < size && y < size && z < size, "Tried to access space out of map bounds")
         return self.container[getArrayIndex(x, y: y, z: z)];
+    }
+    
+    func insert(entity e: Entity, atPosition position: MapPosition) {
+        self.container[getArrayIndex(position)].insertEntity(e)
+    }
+    
+    func removeEntity(atPosition position: MapPosition) {
+        self.container[getArrayIndex(position)].removeEntity()
     }
     
     func addMapTo(scene: SKScene) -> Void {

@@ -10,7 +10,7 @@ import SpriteKit
 
 
 
-class MapSpace {
+struct MapSpace {
     var entity : Entity?
     var terrain: Terrain! = nil {
         didSet {
@@ -31,7 +31,7 @@ class MapSpace {
         self.mapNode = mapNode
     }
     
-    func insertEntity(e: Entity) -> Void {
+    mutating func insertEntity(e: Entity) -> Void {
         self.entity = e
         if(e.graphics.getNode().parent !== self.mapNode) {
             e.graphics.getNode().zPosition = 1
@@ -39,7 +39,7 @@ class MapSpace {
         }
     }
     
-    func removeEntity() -> Void {
+    mutating func removeEntity() -> Void {
         if let entity = self.entity {
             self.entity = nil
         }

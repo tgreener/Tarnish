@@ -41,9 +41,9 @@ class PositionComponentImpl : PositionComponent {
         
         if !destinationSpace.containsEntity() {
             if currentSpace.getEntity() === self.entity {
-                currentSpace.removeEntity()
+                map.removeEntity(atPosition: previousPosition)
             }
-            destinationSpace.insertEntity(self.entity)
+            map.insert(entity: self.entity, atPosition: newPosition)
             self.mapPosition = newPosition
             
             return true

@@ -9,7 +9,7 @@
 import SpriteKit
 
 class PlayScene : BaseScene {
-    let mapSize : UInt = 8 // 64 should be max map size, I think
+    let mapSize : UInt = 64 // 64 should be max map size, I think
     var map : GameMap!
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
