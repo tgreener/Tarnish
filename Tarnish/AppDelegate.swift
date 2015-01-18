@@ -55,5 +55,3 @@ func random(minVal: UInt, maxVal: UInt) -> UInt {
     return UInt(arc4random_uniform(UInt32(maxVal) - UInt32(minVal))) + minVal
 }
 
-let operationQueue = NSOperationQueue()
-

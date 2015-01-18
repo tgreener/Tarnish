@@ -8,8 +8,10 @@
 
 import Foundation
 
+let AIOperationQueue = NSOperationQueue()
+
 protocol AStar {
-    func calculatePath(([MapPosition]?) -> Void)
+    func calculatePath() -> [MapPosition]?
 }
 
 class AStarImpl : AStar {
@@ -54,41 +56,65 @@ class AStarImpl : AStar {
         return path
     }
     
-    func calculatePath(completionCallback: ([MapPosition]?) -> Void){
-        operationQueue.addOperationWithBlock {
-        
-            while self.openSet.count > 0 {
-                if let current = self.openSet.next() {
-                    if current == self.goal {
-                        self.lastCalculatedPosition = current
-                        
-                        NSOperationQueue.mainQueue().addOperationWithBlock {
-                            completionCallback(self.createPath())
-                        }
-                        return
-                    }
-                    self.closedSet.append(current)
+    func calculatePath() -> [MapPosition]? {
+        while self.openSet.count > 0 {
+            if let current = self.openSet.next() {
+                if current == self.goal {
+                    self.lastCalculatedPosition = current
                     
-                    for position : MapPosition in self.map.getPathableNeighbors(current) {
-                        if contains(self.closedSet, position) { continue }
-                        
-                        let possibleDistance : Double = self.knownDistance[current]! + 1 // Travel between all terrain squares is currently just 1
-                        if !self.openSet.contains(position) || self.knownDistance[position] > possibleDistance {
-                            self.positionBefore[position] = current
-                            self.knownDistance[position]  = possibleDistance
-                            self.estimatedDistance[position] = self.knownDistance[position]! + self.heuristic(position, goal: self.goal)
-                            if !self.openSet.contains(position) {
-                                self.openSet.push(self.estimatedDistance[position]!, item: position)
-                            }
+                    return self.createPath()
+                }
+                self.closedSet.append(current)
+                
+                for position : MapPosition in self.map.getPathableNeighbors(current) {
+                    if contains(self.closedSet, position) { continue }
+                    
+                    let possibleDistance : Double = self.knownDistance[current]! + 1 // Travel between all terrain squares is currently just 1
+                    if !self.openSet.contains(position) || self.knownDistance[position] > possibleDistance {
+                        self.positionBefore[position] = current
+                        self.knownDistance[position]  = possibleDistance
+                        self.estimatedDistance[position] = self.knownDistance[position]! + self.heuristic(position, goal: self.goal)
+                        if !self.openSet.contains(position) {
+                            self.openSet.push(self.estimatedDistance[position]!, item: position)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    func calculatePartialPath(iterations i: UInt) -> [MapPosition]? {
+        var count : UInt = 0
+        
+        while self.openSet.count > 0 {
+            if let current = self.openSet.next() {
+                if current == self.goal || count >= i {
+                    self.lastCalculatedPosition = current
+                    
+                    return self.createPath()
+                }
+                self.closedSet.append(current)
+                
+                for position : MapPosition in self.map.getPathableNeighbors(current) {
+                    if contains(self.closedSet, position) { continue }
+                    
+                    let possibleDistance : Double = self.knownDistance[current]! + 1 // Travel between all terrain squares is currently just 1
+                    if !self.openSet.contains(position) || self.knownDistance[position] > possibleDistance {
+                        self.positionBefore[position] = current
+                        self.knownDistance[position]  = possibleDistance
+                        self.estimatedDistance[position] = self.knownDistance[position]! + self.heuristic(position, goal: self.goal)
+                        if !self.openSet.contains(position) {
+                            self.openSet.push(self.estimatedDistance[position]!, item: position)
                         }
                     }
                 }
             }
             
-            NSOperationQueue.mainQueue().addOperationWithBlock {
-                completionCallback(nil)
-            }
+            count++
         }
-        
+        return nil
     }
+    
 }

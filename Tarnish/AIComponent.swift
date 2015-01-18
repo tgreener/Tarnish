@@ -51,13 +51,15 @@ class AIComponentImpl : AIComponent, PositionComponentListener, GraphicsComponen
             if goal == nil {
                 generateGoal()
                 let astar : AStar = AStarImpl(start: currentPosition!, end: goal!, map: map)
-                astar.calculatePath({path in
-                    self.currentPath = path
-                    self.pathItr = self.currentPath?.generate()
-                    while let step = self.pathItr.next() {
-                        if step != self.currentPosition! {
-                            self.currentStep = step
-                            break
+                astar.calculatePath({result in
+                    if let path = result {
+                        self.currentPath = path
+                        self.pathItr = self.currentPath?.generate()
+                        while let step = self.pathItr.next() {
+                            if step != self.currentPosition! {
+                                self.currentStep = step
+                                break
+                            }
                         }
                     }
                 })

@@ -14,8 +14,7 @@ class PlayScene : BaseScene {
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
     
-    var beardling : Entity!
-    var braidling : Entity!
+    var beardlings = [Entity]()
     
     var previousTime : NSTimeInterval = 0
     
@@ -29,10 +28,25 @@ class PlayScene : BaseScene {
         
         self.map.addMapTo(self)
         
-        beardling = entityFactory.createBeardling()
+        let beardling = entityFactory.createBeardling()
         beardling.position.setTo(MapPosition(x: 0, y: 0, z: 0))
-        braidling = entityFactory.createBraidling()
+        let beardling1 = entityFactory.createBeardling()
+        beardling1.position.setTo(MapPosition(x: mapSize / 2, y: 0, z: 0))
+        let beardling2 = entityFactory.createBeardling()
+        beardling2.position.setTo(MapPosition(x: mapSize - 1, y: 0, z: 0))
+        let braidling = entityFactory.createBraidling()
         braidling.position.setTo(MapPosition(x: 0, y: mapSize - 1, z: 0))
+        let braidling1 = entityFactory.createBraidling()
+        braidling1.position.setTo(MapPosition(x: mapSize / 2, y: mapSize - 1, z: 0))
+        let braidling2 = entityFactory.createBraidling()
+        braidling2.position.setTo(MapPosition(x: mapSize - 1, y: mapSize - 1, z: 0))
+        
+        beardlings.append(beardling)
+        beardlings.append(braidling)
+        beardlings.append(braidling1)
+        beardlings.append(braidling2)
+        beardlings.append(beardling1)
+        beardlings.append(beardling2)
         
         let building = entityFactory.createNormalHouseBright()
         building.position.setTo(MapPosition(x: mapSize / 2, y: mapSize / 2, z: 0))
@@ -48,11 +62,10 @@ class PlayScene : BaseScene {
     
     override func update(currentTime: NSTimeInterval) {
         let dt = currentTime - previousTime
-        if let ai = beardling.ai {
-            ai.update(dt)
-        }
-        if let ai = braidling.ai {
-            ai.update(dt)
+        for beardling in beardlings {
+            if let ai = beardling.ai {
+                ai.update(dt)
+            }
         }
         previousTime = currentTime
     }

@@ -11,8 +11,8 @@ import Foundation
 protocol PositionComponent : class {
     func addListener(listener: PositionComponentListener) -> Void
     
-    func moveTo(position: MapPosition) -> Void
-    func setTo(position : MapPosition) -> Void
+    func moveTo(position: MapPosition) -> Bool
+    func setTo(position : MapPosition) -> Bool
     
     var entity      : Entity!     { get set }
     var mapPosition : MapPosition { get }
@@ -55,18 +55,22 @@ class PositionComponentImpl : PositionComponent {
         self.listeners.append(listener)
     }
     
-    func moveTo(position: MapPosition) -> Void {
+    func moveTo(position: MapPosition) -> Bool {
         let previousPosition = self.mapPosition
         if assumeNewPosition(position, previousPosition: previousPosition) {
             notify({listener in listener.positionMovedTo(self.mapPosition, from: previousPosition, map: self.map) })
+            return true
         }
+        return false
     }
 
-    func setTo(position: MapPosition) {
+    func setTo(position: MapPosition) -> Bool {
         let previousPosition = self.mapPosition
         if assumeNewPosition(position, previousPosition: previousPosition) {
             notify({listener in listener.positionSetTo(self.mapPosition, from: previousPosition, map: self.map) })
+            return true
         }
+        return false
     }
 }
 
