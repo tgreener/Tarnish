@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PositionComponent : class {
+protocol PositionComponent : class, GraphicsComponentListener {
     func addListener(listener: PositionComponentListener) -> Void
     
     func moveTo(position: MapPosition) -> Bool
@@ -16,30 +16,26 @@ protocol PositionComponent : class {
     
     var entity      : Entity!     { get set }
     var mapPosition : MapPosition { get }
+    var isMoving    : Bool        { get }
 }
 
 class PositionComponentImpl : PositionComponent {
     var mapPosition : MapPosition = MapPosition(x: 0, y: 0, z: 0)
+    var isMoving : Bool = false
     
-    var listeners: [PositionComponentListener] = [PositionComponentListener]()
+    let notifier : Notifier<PositionComponentListener> = Notifier<PositionComponentListener>()
     weak var entity : Entity!
-    unowned let map : GameMapImpl
+    unowned let map : GameMap
     
-    init(map: GameMapImpl) {
+    init(map: GameMap) {
         self.map = map
-    }
-    
-    func notify(closure: (PositionComponentListener) -> Void) {
-        for listener in listeners {
-            closure(listener)
-        }
     }
     
     func assumeNewPosition(newPosition: MapPosition, previousPosition: MapPosition) -> Bool {
         let destinationSpace = map.mapSpaceAt(newPosition.x, y: newPosition.y, z: newPosition.z)
         let currentSpace = map.mapSpaceAt(previousPosition.x, y: previousPosition.y, z: previousPosition.z)
         
-        if !destinationSpace.containsEntity() {
+        if !destinationSpace.containsEntity() && !isMoving {
             if currentSpace.getEntity() === self.entity {
                 map.removeEntity(atPosition: previousPosition)
             }
@@ -52,13 +48,14 @@ class PositionComponentImpl : PositionComponent {
     }
     
     func addListener(listener: PositionComponentListener) -> Void {
-        self.listeners.append(listener)
+        notifier.addListener(listener)
     }
     
     func moveTo(position: MapPosition) -> Bool {
         let previousPosition = self.mapPosition
         if assumeNewPosition(position, previousPosition: previousPosition) {
-            notify({listener in listener.positionMovedTo(self.mapPosition, from: previousPosition, map: self.map) })
+            notifier.notify({listener in listener.positionMovedTo(self.mapPosition, from: previousPosition, map: self.map) })
+            isMoving = true
             return true
         }
         return false
@@ -67,14 +64,21 @@ class PositionComponentImpl : PositionComponent {
     func setTo(position: MapPosition) -> Bool {
         let previousPosition = self.mapPosition
         if assumeNewPosition(position, previousPosition: previousPosition) {
-            notify({listener in listener.positionSetTo(self.mapPosition, from: previousPosition, map: self.map) })
+            notifier.notify({listener in listener.positionSetTo(self.mapPosition, from: previousPosition, map: self.map) })
             return true
         }
         return false
     }
+    
+    func graphicMovedToPosition(position: MapPosition) {
+        isMoving = false
+    }
+    
+    func graphicWasAddedToScene() {}
+    func graphicWasRemovedFromScene() {}
 }
 
-protocol PositionComponentListener {
+protocol PositionComponentListener: class {
     func positionMovedTo(position: MapPosition, from: MapPosition, map: GameMap) -> Void
     func positionSetTo(position: MapPosition, from: MapPosition, map: GameMap) -> Void
 }

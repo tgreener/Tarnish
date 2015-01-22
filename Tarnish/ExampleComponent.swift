@@ -10,15 +10,15 @@ import Foundation
 
 class ExampleComponent : GraphicsComponentListener{
     
-    func graphicWasAddedToScene(graphic: GraphicsComponent) {
+    func graphicWasAddedToScene() {
 //        println("Graphic was added!")
     }
     
-    func graphicWasRemovedFromScene(graphic: GraphicsComponent) {
+    func graphicWasRemovedFromScene() {
         println("Graphic was removed!")
     }
     
-    func graphicMovedToPosition(graphic: GraphicsComponent, position: MapPosition) -> Void {
+    func graphicMovedToPosition(position: MapPosition) -> Void {
 //        println("Graphic moved to map position!")
     }
 }

@@ -9,30 +9,25 @@
 import Foundation
 
 protocol AIComponent  {
-    func update(dt: NSTimeInterval) -> Void
+    func update(inout claims: [MapPosition : [PathStepper]]) -> Void
     func addListener(listener: AIComponentListener) -> Void
+    
+    var entity : Entity! { get set }
 }
 
-class AIComponentImpl : AIComponent, PositionComponentListener, GraphicsComponentListener {
+class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelegate {
     let notifier : Notifier<AIComponentListener> = Notifier<AIComponentListener>()
     let map : GameMap
-    var isReady = false
-    var isMoving = false
-    var currentPosition : MapPosition?
-    var currentPath : [MapPosition]?
-    var pathItr : IndexingGenerator<Array<MapPosition>>!
-    var currentStep : MapPosition?
+    let pathFinder : Pathfinder!
     
     var goal : MapPosition?  // In the future, I'll need to make a system with more descriptive goal classes
-    var positionComponent : PositionComponent!
+    weak var positionComponent : PositionComponent!
+    weak var entity : Entity! = nil
     
     init(map: GameMap, positionComponent: PositionComponent) {
         self.positionComponent = positionComponent
         self.map = map
-    }
-    
-    deinit {
-        positionComponent = nil
+        self.pathFinder = PathfinderImpl(entityPosition: self.positionComponent, delegate: self, map: self.map)
     }
     
     func generateGoal() -> Void {
@@ -46,69 +41,34 @@ class AIComponentImpl : AIComponent, PositionComponentListener, GraphicsComponen
         }
     }
     
-    func update(dt: NSTimeInterval) {
-        if isReady && !isMoving {
-            if goal == nil {
-                generateGoal()
-                let astar : AStar = AStarImpl(start: currentPosition!, end: goal!, map: map)
-                astar.calculatePath({result in
-                    if let path = result {
-                        self.currentPath = path
-                        self.pathItr = self.currentPath?.generate()
-                        while let step = self.pathItr.next() {
-                            if step != self.currentPosition! {
-                                self.currentStep = step
-                                break
-                            }
-                        }
-                    }
-                })
-            }
-            else if self.pathItr != nil {
-                if let step = self.currentStep {
-                    if map.mapSpaceAt(step).isPathable() && currentPosition!.distanceSquaredTo(step) <= 1 && step != currentPosition {
-                        positionComponent.moveTo(step)
-                        self.currentStep = self.pathItr.next()
-                    }
-                }
-            }
+    func update(inout claims: [MapPosition : [PathStepper]]) {
+        if goal == nil {
+            generateGoal()
+            pathFinder.goTo(self.goal!)
         }
+        
+        pathFinder.update(&claims)
     }
     
     func positionMovedTo(position: MapPosition, from:MapPosition, map: GameMap) {
-        currentPosition = position
-        isMoving = true
+        
     }
     
     func positionSetTo(position: MapPosition, from: MapPosition, map: GameMap) {
-        currentPosition = position
+        
     }
     
-    func graphicMovedToPosition(graphic: GraphicsComponent, position: MapPosition) {
-        if isMoving && currentPosition == position { isMoving = false }
-        if position == goal {
-            goal = nil
-            currentPath = nil
-            pathItr = nil
-            
-            notifier.notify({ listener in listener.reachedGoal() })
-        }
-    }
-    
-    func graphicWasAddedToScene(graphic: GraphicsComponent) {
-        isReady = true
-    }
-    
-    func graphicWasRemovedFromScene(graphic: GraphicsComponent) {
-        isReady = false
+    func pathfinderReachedGoal() -> Void {
+        self.goal = nil
+        self.notifier.notify({listener in listener.reachedGoal()})
     }
     
     func addListener(listener: AIComponentListener) {
-        notifier.listeners.append(listener)
+        notifier.addListener(listener)
     }
 
 }
 
-protocol AIComponentListener {
+protocol AIComponentListener: class {
     func reachedGoal() -> Void
 }

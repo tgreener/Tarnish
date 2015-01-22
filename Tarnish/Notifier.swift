@@ -21,3 +21,10 @@ class Notifier<ListenerType> {
         }
     }
 }
+
+class Listener<ListenerType: AnyObject> {
+    unowned let value : ListenerType // TODO: Use this once the compiler is updated. The unowned and AnyObject parts throw it for a loop (figuratively).
+    init(value: ListenerType) {
+        self.value = value
+    }
+}

@@ -9,7 +9,7 @@
 import SpriteKit
 
 class PlayScene : BaseScene {
-    let mapSize : UInt = 64 // 64 should be max map size, I think
+    let mapSize : UInt = 10 // 64 should be max map size, I think
     var map : GameMap!
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
@@ -62,11 +62,25 @@ class PlayScene : BaseScene {
     
     override func update(currentTime: NSTimeInterval) {
         let dt = currentTime - previousTime
+        
+        // AI Loop
+        var claims : [MapPosition : [PathStepper]] = [MapPosition : [PathStepper]]()
         for beardling in beardlings {
             if let ai = beardling.ai {
-                ai.update(dt)
+                ai.update(&claims)
             }
         }
+        
+        // Resolve conflicts.
+        // TODO: Make this way better
+        for (position, steppers) in claims {
+            steppers[0].step()
+            
+            for var i = 1; i < steppers.count; i++ {
+                steppers[i].stop()
+            }
+        }
+        
         previousTime = currentTime
     }
     

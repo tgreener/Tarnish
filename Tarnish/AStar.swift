@@ -8,10 +8,9 @@
 
 import Foundation
 
-let AIOperationQueue = NSOperationQueue()
-
 protocol AStar {
     func calculatePath() -> [MapPosition]?
+    func calculatePartialPath(iterations i: UInt) -> [MapPosition]?
 }
 
 class AStarImpl : AStar {

@@ -28,7 +28,7 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
         
         let defaultTex = beardlingTextures[BeardlingTextureType.Idle1]
         
-        super.init(texture: defaultTex, color: SKColor.redColor(), size: defaultTex!.size())
+        super.init(texture: defaultTex, color: SKColor.whiteColor(), size: defaultTex!.size())
         idleAnimationAction = createIdleAnimationAction()
         runAnimationAction  = createRunAnimationAction()
         currentAction = idleAnimationAction

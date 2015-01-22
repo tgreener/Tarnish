@@ -36,7 +36,10 @@ class Entity : Updatable{
         self.position = position
         self.position.entity = self
         
+        if self.ai != nil { self.ai!.entity = self }
+        
         self.graphics.addListener(self.exampleComponent)
+        self.graphics.addListener(self.position)
         self.position.addListener(self.graphics)
     }
     

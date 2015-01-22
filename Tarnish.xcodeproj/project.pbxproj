@@ -29,27 +29,18 @@
 		F592D9CB1A61B9EC00F0EC6D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */; };
 		F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */; };
 		F5AC73C11A638D29008D2DC5 /* BuildingGraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */; };
+		F5C13CAE1A6C667100A27392 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C13CAD1A6C667100A27392 /* Pathfinder.swift */; };
+		F5C13CB01A6C667D00A27392 /* PathStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C13CAF1A6C667D00A27392 /* PathStepper.swift */; };
 		F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F31A5BA44D00188814 /* AppDelegate.swift */; };
 		F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F91A5BA44D00188814 /* GameViewController.swift */; };
 		F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5C805FE1A5BA44D00188814 /* Images.xcassets */; };
 		F5C806021A5BA44D00188814 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C806001A5BA44D00188814 /* LaunchScreen.xib */; };
-		F5C8060E1A5BA44D00188814 /* TarnishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8060D1A5BA44D00188814 /* TarnishTests.swift */; };
 		F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806181A5BA50D00188814 /* BaseScene.swift */; };
 		F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806191A5BA50D00188814 /* TitleScene.swift */; };
 		F5E4B0321A621E61006B4360 /* BuildingGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */; };
 		F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2024D1A675EAA00E143BA /* AStar.swift */; };
 		F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F202511A6767F300E143BA /* PriorityQueue.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F5C806081A5BA44D00188814 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F5C805E61A5BA44D00188814 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F5C805ED1A5BA44D00188814;
-			remoteInfo = Tarnish;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beardling_sheet_v3.png; sourceTree = "<group>"; };
@@ -74,15 +65,14 @@
 		F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsComponent.swift; sourceTree = "<group>"; };
+		F5C13CAD1A6C667100A27392 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
+		F5C13CAF1A6C667D00A27392 /* PathStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathStepper.swift; sourceTree = "<group>"; };
 		F5C805EE1A5BA44D00188814 /* Tarnish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tarnish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C805F21A5BA44D00188814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C805F31A5BA44D00188814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5C805F91A5BA44D00188814 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F5C805FE1A5BA44D00188814 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F5C806011A5BA44D00188814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F5C806071A5BA44D00188814 /* TarnishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TarnishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5C8060C1A5BA44D00188814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5C8060D1A5BA44D00188814 /* TarnishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarnishTests.swift; sourceTree = "<group>"; };
 		F5C806181A5BA50D00188814 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F5C806191A5BA50D00188814 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsFactory.swift; sourceTree = "<group>"; };
@@ -92,13 +82,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		F5C805EB1A5BA44D00188814 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5C806041A5BA44D00188814 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -181,11 +164,18 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		F5C13CB11A6C668700A27392 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2024D1A675EAA00E143BA /* AStar.swift */,
+			);
+			name = Algorithms;
+			sourceTree = "<group>";
+		};
 		F5C805E51A5BA44D00188814 = {
 			isa = PBXGroup;
 			children = (
 				F5C805F01A5BA44D00188814 /* Tarnish */,
-				F5C8060A1A5BA44D00188814 /* TarnishTests */,
 				F5C805EF1A5BA44D00188814 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -194,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				F5C805EE1A5BA44D00188814 /* Tarnish.app */,
-				F5C806071A5BA44D00188814 /* TarnishTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,23 +215,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F5C8060A1A5BA44D00188814 /* TarnishTests */ = {
-			isa = PBXGroup;
-			children = (
-				F5C8060D1A5BA44D00188814 /* TarnishTests.swift */,
-				F5C8060B1A5BA44D00188814 /* Supporting Files */,
-			);
-			path = TarnishTests;
-			sourceTree = "<group>";
-		};
-		F5C8060B1A5BA44D00188814 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F5C8060C1A5BA44D00188814 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		F5C806171A5BA4C800188814 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,7 +228,8 @@
 		F5F2024C1A675E8E00E143BA /* AI */ = {
 			isa = PBXGroup;
 			children = (
-				F5F2024D1A675EAA00E143BA /* AStar.swift */,
+				F5C13CAD1A6C667100A27392 /* Pathfinder.swift */,
+				F5C13CAF1A6C667D00A27392 /* PathStepper.swift */,
 			);
 			name = AI;
 			sourceTree = "<group>";
@@ -264,6 +237,7 @@
 		F5F2024F1A67677200E143BA /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				F5C13CB11A6C668700A27392 /* Algorithms */,
 				F56EB29F1A68A5F100C8BDCC /* Communication */,
 				F5F202501A67677C00E143BA /* Collections */,
 			);
@@ -298,24 +272,6 @@
 			productReference = F5C805EE1A5BA44D00188814 /* Tarnish.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F5C806061A5BA44D00188814 /* TarnishTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F5C806141A5BA44D00188814 /* Build configuration list for PBXNativeTarget "TarnishTests" */;
-			buildPhases = (
-				F5C806031A5BA44D00188814 /* Sources */,
-				F5C806041A5BA44D00188814 /* Frameworks */,
-				F5C806051A5BA44D00188814 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F5C806091A5BA44D00188814 /* PBXTargetDependency */,
-			);
-			name = TarnishTests;
-			productName = TarnishTests;
-			productReference = F5C806071A5BA44D00188814 /* TarnishTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -328,10 +284,6 @@
 					F5C805ED1A5BA44D00188814 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 6LP8SH262R;
-					};
-					F5C806061A5BA44D00188814 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = F5C805ED1A5BA44D00188814;
 					};
 				};
 			};
@@ -349,7 +301,6 @@
 			projectRoot = "";
 			targets = (
 				F5C805ED1A5BA44D00188814 /* Tarnish */,
-				F5C806061A5BA44D00188814 /* TarnishTests */,
 			);
 		};
 /* End PBXProject section */
@@ -367,13 +318,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5C806051A5BA44D00188814 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -385,6 +329,7 @@
 				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */,
 				F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */,
+				F5C13CAE1A6C667100A27392 /* Pathfinder.swift in Sources */,
 				F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */,
 				F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */,
 				F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */,
@@ -404,29 +349,14 @@
 				F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */,
 				F5AC73C11A638D29008D2DC5 /* BuildingGraphicsComponent.swift in Sources */,
 				F515C61D1A6807AC003BB084 /* AIComponent.swift in Sources */,
+				F5C13CB01A6C667D00A27392 /* PathStepper.swift in Sources */,
 				F528866C1A5CFC5100DF976F /* PlayScene.swift in Sources */,
 				F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */,
 				F562AA5E1A620FA6002080F1 /* TerrainGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5C806031A5BA44D00188814 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F5C8060E1A5BA44D00188814 /* TarnishTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F5C806091A5BA44D00188814 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F5C805ED1A5BA44D00188814 /* Tarnish */;
-			targetProxy = F5C806081A5BA44D00188814 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F5C806001A5BA44D00188814 /* LaunchScreen.xib */ = {
@@ -545,40 +475,6 @@
 			};
 			name = Release;
 		};
-		F5C806151A5BA44D00188814 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TarnishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tarnish.app/Tarnish";
-			};
-			name = Debug;
-		};
-		F5C806161A5BA44D00188814 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TarnishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tarnish.app/Tarnish";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -596,15 +492,6 @@
 			buildConfigurations = (
 				F5C806121A5BA44D00188814 /* Debug */,
 				F5C806131A5BA44D00188814 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F5C806141A5BA44D00188814 /* Build configuration list for PBXNativeTarget "TarnishTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F5C806151A5BA44D00188814 /* Debug */,
-				F5C806161A5BA44D00188814 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

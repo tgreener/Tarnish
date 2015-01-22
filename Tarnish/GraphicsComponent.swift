@@ -8,10 +8,10 @@
 
 import SpriteKit
 
-protocol GraphicsComponentListener {
-    func graphicWasRemovedFromScene(graphic: GraphicsComponent) -> Void
-    func graphicWasAddedToScene(graphic: GraphicsComponent) -> Void
-    func graphicMovedToPosition(graphic: GraphicsComponent, position: MapPosition) -> Void
+protocol GraphicsComponentListener: class {
+    func graphicWasRemovedFromScene() -> Void
+    func graphicWasAddedToScene() -> Void
+    func graphicMovedToPosition(position: MapPosition) -> Void
 }
 
 protocol GraphicsComponent : PositionComponentListener {
@@ -29,27 +29,22 @@ protocol GraphicsComponent : PositionComponentListener {
 
 class GraphicNode : SKSpriteNode, GraphicsComponent {
     var listeners : [GraphicsComponentListener] = [GraphicsComponentListener]()
+    let notifier  : Notifier<GraphicsComponentListener> = Notifier<GraphicsComponentListener>()
     
     func addListener(listener: GraphicsComponentListener) {
-        listeners.append(listener)
-    }
-    
-    func notify(closure: (GraphicsComponentListener) -> Void) {
-        for listener in listeners {
-            closure(listener)
-        }
+        notifier.addListener(listener)
     }
     
     func notifyAddedToScene() {
-        notify({ listener in listener.graphicWasAddedToScene(self) })
+        notifier.notify({ listener in listener.graphicWasAddedToScene() })
     }
     
     func notifyRemovedFromScene() {
-        notify({ listener in listener.graphicWasRemovedFromScene(self) })
+        notifier.notify({ listener in listener.graphicWasRemovedFromScene() })
     }
     
     func notifyMovedTo(position: MapPosition) {
-        notify({ listener in listener.graphicMovedToPosition(self, position: position)})
+        notifier.notify({ listener in listener.graphicMovedToPosition(position)})
     }
     
     func addTo(node: SKNode) {

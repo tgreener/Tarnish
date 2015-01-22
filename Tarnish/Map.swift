@@ -8,9 +8,11 @@
 
 import SpriteKit
 
-protocol GameMap {
+protocol GameMap : class {
     func mapSpaceAt(x : UInt, y : UInt, z : UInt) -> MapSpace
     func mapSpaceAt(position: MapPosition) -> MapSpace
+    func insert(entity e: Entity, atPosition position: MapPosition) -> Void
+    func removeEntity(atPosition position: MapPosition) -> Void
     
     func addMapTo(scene: SKScene) -> Void
     func convertToMapNodeSpace(mapPosition: MapPosition) -> CGPoint

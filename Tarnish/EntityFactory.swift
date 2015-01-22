@@ -27,7 +27,6 @@ class EntityFactoryImpl : EntityFactory {
         let position = PositionComponentImpl(map: self.map)
         let ai = AIComponentImpl(map: self.map, positionComponent: position)
         position.addListener(ai)
-        graphics.addListener(ai)
         ai.addListener(graphics)
         
         return EntityBuilder.entity()
