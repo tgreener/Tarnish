@@ -55,6 +55,9 @@ class PathfinderImpl: Pathfinder, PathStepperDelegate {
                     self.isCalculatingPath = false
                 }
             }
+            else {
+                self.goTo(self.goal)
+            }
         }
     }
     

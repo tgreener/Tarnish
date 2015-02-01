@@ -30,6 +30,7 @@ class GraphicsFactory {
         
         terrainFactory.loadTerrain()
         buildingFactory.loadBuildings()
+        itemsFactory.loadItems()
     }
     
     func createRegularBeardlingGraphic() -> BeardlingGraphicComponent {
@@ -44,13 +45,23 @@ class GraphicsFactory {
         return buildingFactory.createBuildingGraphic(type)
     }
     
+    func createItemGraphic(type: ItemTextureType) -> GraphicsComponent {
+        return itemsFactory.createItemGraphic(type)
+    }
+    
     let beardlingFactory : BeardlingGraphicsFactory
     let terrainFactory   : TerrainGraphicsFactory
-    let buildingFactory   : BuildingGraphicsFactory
+    let buildingFactory  : BuildingGraphicsFactory
+    let itemsFactory     : ItemGraphicsFactory
     
-    init(beardlingFactory: BeardlingGraphicsFactory, terrainFactory: TerrainGraphicsFactory, buildingFactory: BuildingGraphicsFactory) {
+    init(beardlingFactory: BeardlingGraphicsFactory,
+        terrainFactory: TerrainGraphicsFactory,
+        buildingFactory: BuildingGraphicsFactory,
+        itemsFactory: ItemGraphicsFactory)
+    {
         self.beardlingFactory = beardlingFactory
         self.terrainFactory = terrainFactory
         self.buildingFactory = buildingFactory
+        self.itemsFactory = itemsFactory
     }
 }

@@ -46,6 +46,9 @@ class PathStepper {
                     claims[step] = claimingEntities
                 }
             }
+            else {
+                self.stop()
+            }
         }
     }
     

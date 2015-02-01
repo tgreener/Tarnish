@@ -11,7 +11,7 @@ import SpriteKit
 
 
 struct MapSpace {
-    var entity : Entity?
+    var entities : [Entity] = [Entity]()
     var terrain: Terrain! = nil {
         didSet {
             self.terrain.sprite.position = mapNode.convertToMapNodeSpace(position)
@@ -26,44 +26,46 @@ struct MapSpace {
     unowned let mapNode : MapNode
     
     init(position: MapPosition, mapNode: MapNode) {
-        self.entity = nil
         self.position = position
         self.mapNode = mapNode
     }
     
     mutating func insertEntity(e: Entity) -> Void {
-        self.entity = e
+        entities.append(e)
         if(e.graphics.getNode().parent !== self.mapNode) {
             e.graphics.getNode().zPosition = 1
             e.graphics.addTo(self.mapNode)
         }
     }
     
-    mutating func removeEntity() -> Void {
-        if let entity = self.entity {
-            self.entity = nil
+    mutating func removeEntity(e : Entity) -> Void {
+        for var i = 0; i < entities.count; i++ {
+            if entities[i] === e {
+                entities.removeAtIndex(i)
+                break
+            }
         }
     }
     
     func containsEntity() -> Bool {
-        return self.entity != nil
+        return entities.count > 0
     }
     
-    func getEntity() -> Entity? {
-        return self.entity
+    func getEntity(e: Entity) -> Entity? {
+        for entity in entities {
+            if entity === e { return entity }
+        }
+        return nil
     }
     
     func isPathable() -> Bool {
-        var result : Bool = false
+        var blocked : Bool = self.terrain.blocksPathing
         
-        if let entity = self.entity {
-            result = result || (!entity.physics.blocksPathing && !self.terrain.blocksPathing)
-        }
-        else {
-            result = result || !self.terrain.blocksPathing
+        for entity in entities {
+            blocked = blocked || entity.physics.blocksPathing
         }
         
-        return result
+        return !blocked
     }
 }
 

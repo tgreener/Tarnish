@@ -13,32 +13,30 @@ protocol Updatable {
 }
 
 class Entity : Updatable{
-    let exampleComponent : ExampleComponent
     let graphics : GraphicsComponent
     let position : PositionComponent
     let physics  : PhysicalComponent
     let character: CharacterComponent?
     let ai       : AIComponent?
+    let item     : ItemComponent?
     
-    init(exampleComponent : ExampleComponent,
-        graphics: GraphicsComponent,
-        position: PositionComponent,
-        physical: PhysicalComponent,
+    init(graphics: GraphicsComponent,
+        position : PositionComponent,
+        physical : PhysicalComponent,
         character: CharacterComponent?,
-        ai       : AIComponent?
-        )
+        ai       : AIComponent?,
+        item     : ItemComponent?)
     {
-        self.exampleComponent = exampleComponent
+        self.item      = item
         self.character = character
-        self.ai       = ai
-        self.physics  = physical
-        self.graphics = graphics
-        self.position = position
+        self.ai        = ai
+        self.physics   = physical
+        self.graphics  = graphics
+        self.position  = position
         self.position.entity = self
         
         if self.ai != nil { self.ai!.entity = self }
         
-        self.graphics.addListener(self.exampleComponent)
         self.graphics.addListener(self.position)
         self.position.addListener(self.graphics)
     }

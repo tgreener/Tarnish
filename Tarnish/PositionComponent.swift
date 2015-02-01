@@ -35,9 +35,9 @@ class PositionComponentImpl : PositionComponent {
         let destinationSpace = map.mapSpaceAt(newPosition.x, y: newPosition.y, z: newPosition.z)
         let currentSpace = map.mapSpaceAt(previousPosition.x, y: previousPosition.y, z: previousPosition.z)
         
-        if !destinationSpace.containsEntity() && !isMoving {
-            if currentSpace.getEntity() === self.entity {
-                map.removeEntity(atPosition: previousPosition)
+        if !self.entity.physics.blocksPathing || destinationSpace.isPathable() && !isMoving {
+            if currentSpace.getEntity(self.entity) != nil {
+                map.removeEntity(self.entity, atPosition: previousPosition)
             }
             map.insert(entity: self.entity, atPosition: newPosition)
             self.mapPosition = newPosition

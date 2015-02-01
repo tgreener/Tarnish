@@ -12,7 +12,7 @@ protocol GameMap : class {
     func mapSpaceAt(x : UInt, y : UInt, z : UInt) -> MapSpace
     func mapSpaceAt(position: MapPosition) -> MapSpace
     func insert(entity e: Entity, atPosition position: MapPosition) -> Void
-    func removeEntity(atPosition position: MapPosition) -> Void
+    func removeEntity(entity: Entity, atPosition position: MapPosition) -> Void
     
     func addMapTo(scene: SKScene) -> Void
     func convertToMapNodeSpace(mapPosition: MapPosition) -> CGPoint
@@ -70,8 +70,8 @@ class GameMapImpl : GameMap {
         self.container[getArrayIndex(position)].insertEntity(e)
     }
     
-    func removeEntity(atPosition position: MapPosition) {
-        self.container[getArrayIndex(position)].removeEntity()
+    func removeEntity(entity: Entity, atPosition position: MapPosition) {
+        self.container[getArrayIndex(position)].removeEntity(entity)
     }
     
     func addMapTo(scene: SKScene) -> Void {

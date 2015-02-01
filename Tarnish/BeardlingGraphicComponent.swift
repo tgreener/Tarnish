@@ -48,7 +48,6 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
     
     override func positionMovedTo(position: MapPosition, from: MapPosition, map: GameMap) {
         if self.position != map.convertToMapNodeSpace(position) {
-            super.positionMovedTo(position, from: from, map: map)
             
             if Int(from.x) - Int(position.x) > 0 {
                 if self.xScale > 0 {
@@ -62,6 +61,7 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
             }
             
             currentAction = self.runAnimationAction
+            super.positionMovedTo(position, from: from, map: map)
         }
     }
     

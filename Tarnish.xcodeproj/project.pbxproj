@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F510A97B1A661AE400E647BC /* beardling_sheet_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */; };
 		F515C61D1A6807AC003BB084 /* AIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515C61C1A6807AC003BB084 /* AIComponent.swift */; };
-		F51F14001A5C624B00BBC083 /* dwarves.png in Resources */ = {isa = PBXBuildFile; fileRef = F51F13FF1A5C624B00BBC083 /* dwarves.png */; };
 		F51F14021A5C662000BBC083 /* GraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14011A5C662000BBC083 /* GraphicsComponent.swift */; };
 		F51F14051A5C7A8000BBC083 /* GraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */; };
 		F528866C1A5CFC5100DF976F /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528866B1A5CFC5100DF976F /* PlayScene.swift */; };
@@ -28,7 +27,14 @@
 		F59061781A61F44800BE68EA /* micro_tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = F59061771A61F44800BE68EA /* micro_tileset.png */; };
 		F592D9CB1A61B9EC00F0EC6D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */; };
 		F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */; };
+		F5A52B4E1A71E1DC00E1653E /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */; };
+		F5A52B541A741B9B00E1653E /* items.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A52B531A741B9B00E1653E /* items.png */; };
+		F5A52B561A741BFE00E1653E /* ItemsGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A52B551A741BFE00E1653E /* ItemsGraphicsFactory.swift */; };
 		F5AC73C11A638D29008D2DC5 /* BuildingGraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */; };
+		F5BB85D91A7B44F500A1EAA5 /* NeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85D81A7B44F500A1EAA5 /* NeedManager.swift */; };
+		F5BB85DC1A7B455800A1EAA5 /* HungerNeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85DB1A7B455800A1EAA5 /* HungerNeed.swift */; };
+		F5BB85DE1A7B5D8C00A1EAA5 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85DD1A7B5D8C00A1EAA5 /* FoodItem.swift */; };
+		F5BB85E01A7B6A6000A1EAA5 /* ItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85DF1A7B6A6000A1EAA5 /* ItemFactory.swift */; };
 		F5C13CAE1A6C667100A27392 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C13CAD1A6C667100A27392 /* Pathfinder.swift */; };
 		F5C13CB01A6C667D00A27392 /* PathStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C13CAF1A6C667D00A27392 /* PathStepper.swift */; };
 		F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C805F31A5BA44D00188814 /* AppDelegate.swift */; };
@@ -45,7 +51,6 @@
 /* Begin PBXFileReference section */
 		F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beardling_sheet_v3.png; sourceTree = "<group>"; };
 		F515C61C1A6807AC003BB084 /* AIComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIComponent.swift; sourceTree = "<group>"; };
-		F51F13FF1A5C624B00BBC083 /* dwarves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dwarves.png; sourceTree = "<group>"; };
 		F51F14011A5C662000BBC083 /* GraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsComponent.swift; sourceTree = "<group>"; };
 		F51F14041A5C7A8000BBC083 /* GraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsFactory.swift; sourceTree = "<group>"; };
 		F528866B1A5CFC5100DF976F /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
@@ -64,7 +69,14 @@
 		F59061771A61F44800BE68EA /* micro_tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micro_tileset.png; sourceTree = "<group>"; };
 		F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
+		F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
+		F5A52B531A741B9B00E1653E /* items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = items.png; sourceTree = "<group>"; };
+		F5A52B551A741BFE00E1653E /* ItemsGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsGraphicsFactory.swift; sourceTree = "<group>"; };
 		F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsComponent.swift; sourceTree = "<group>"; };
+		F5BB85D81A7B44F500A1EAA5 /* NeedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedManager.swift; sourceTree = "<group>"; };
+		F5BB85DB1A7B455800A1EAA5 /* HungerNeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HungerNeed.swift; sourceTree = "<group>"; };
+		F5BB85DD1A7B5D8C00A1EAA5 /* FoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		F5BB85DF1A7B6A6000A1EAA5 /* ItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemFactory.swift; sourceTree = "<group>"; };
 		F5C13CAD1A6C667100A27392 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
 		F5C13CAF1A6C667D00A27392 /* PathStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathStepper.swift; sourceTree = "<group>"; };
 		F5C805EE1A5BA44D00188814 /* Tarnish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tarnish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,9 +106,9 @@
 		F51F13FE1A5C622B00BBC083 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F5A52B531A741B9B00E1653E /* items.png */,
 				F510A97A1A661AE400E647BC /* beardling_sheet_v3.png */,
 				F59061771A61F44800BE68EA /* micro_tileset.png */,
-				F51F13FF1A5C624B00BBC083 /* dwarves.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -108,6 +120,7 @@
 				F5328BD31A61F2AA0022239A /* BeardlingGraphicsFactory.swift */,
 				F59061751A61F3C200BE68EA /* TerrainGraphicsFactory.swift */,
 				F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */,
+				F5A52B551A741BFE00E1653E /* ItemsGraphicsFactory.swift */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -125,6 +138,10 @@
 		F53825661A5BB3F6009E8984 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				F5A52B521A71E22B00E1653E /* Graphics */,
+				F5A52B511A71E20200E1653E /* Characters */,
+				F5A52B4C1A71E17900E1653E /* Items */,
+				F5F2024C1A675E8E00E143BA /* AI */,
 				F5A0C1DB1A5C89EA002BF131 /* Components */,
 				F538256B1A5C3A5B009E8984 /* Entity.swift */,
 				F528866F1A5D00A200DF976F /* EntityFactory.swift */,
@@ -155,13 +172,45 @@
 				F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */,
 				F51F14011A5C662000BBC083 /* GraphicsComponent.swift */,
 				F5A0C1DC1A5C8A38002BF131 /* PositionComponent.swift */,
-				F52886731A619B1500DF976F /* BeardlingGraphicComponent.swift */,
-				F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */,
-				F58472321A664CF6008D1449 /* CharacterComponent.swift */,
 				F58472341A664D72008D1449 /* PhysicalComponent.swift */,
-				F515C61C1A6807AC003BB084 /* AIComponent.swift */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		F5A52B4C1A71E17900E1653E /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */,
+				F5BB85DD1A7B5D8C00A1EAA5 /* FoodItem.swift */,
+				F5BB85DF1A7B6A6000A1EAA5 /* ItemFactory.swift */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		F5A52B511A71E20200E1653E /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				F58472321A664CF6008D1449 /* CharacterComponent.swift */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		F5A52B521A71E22B00E1653E /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				F52886731A619B1500DF976F /* BeardlingGraphicComponent.swift */,
+				F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		F5BB85DA1A7B451E00A1EAA5 /* Needs */ = {
+			isa = PBXGroup;
+			children = (
+				F5BB85D81A7B44F500A1EAA5 /* NeedManager.swift */,
+				F5BB85DB1A7B455800A1EAA5 /* HungerNeed.swift */,
+			);
+			name = Needs;
 			sourceTree = "<group>";
 		};
 		F5C13CB11A6C668700A27392 /* Algorithms */ = {
@@ -193,7 +242,6 @@
 			children = (
 				F5F2024F1A67677200E143BA /* Library */,
 				F51F14031A5C7A5F00BBC083 /* Graphics */,
-				F5F2024C1A675E8E00E143BA /* AI */,
 				F53825661A5BB3F6009E8984 /* Entities */,
 				F53825651A5BB3E1009E8984 /* Map */,
 				F5C806171A5BA4C800188814 /* Scenes */,
@@ -228,6 +276,8 @@
 		F5F2024C1A675E8E00E143BA /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				F5BB85DA1A7B451E00A1EAA5 /* Needs */,
+				F515C61C1A6807AC003BB084 /* AIComponent.swift */,
 				F5C13CAD1A6C667100A27392 /* Pathfinder.swift */,
 				F5C13CAF1A6C667D00A27392 /* PathStepper.swift */,
 			);
@@ -311,10 +361,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5C806021A5BA44D00188814 /* LaunchScreen.xib in Resources */,
+				F5A52B541A741B9B00E1653E /* items.png in Resources */,
 				F510A97B1A661AE400E647BC /* beardling_sheet_v3.png in Resources */,
 				F5C805FF1A5BA44D00188814 /* Images.xcassets in Resources */,
 				F59061781A61F44800BE68EA /* micro_tileset.png in Resources */,
-				F51F14001A5C624B00BBC083 /* dwarves.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +379,11 @@
 				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */,
 				F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */,
+				F5A52B4E1A71E1DC00E1653E /* ItemComponent.swift in Sources */,
+				F5BB85E01A7B6A6000A1EAA5 /* ItemFactory.swift in Sources */,
 				F5C13CAE1A6C667100A27392 /* Pathfinder.swift in Sources */,
+				F5BB85D91A7B44F500A1EAA5 /* NeedManager.swift in Sources */,
+				F5A52B561A741BFE00E1653E /* ItemsGraphicsFactory.swift in Sources */,
 				F5C805FA1A5BA44D00188814 /* GameViewController.swift in Sources */,
 				F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */,
 				F5A0C1DD1A5C8A38002BF131 /* PositionComponent.swift in Sources */,
@@ -338,6 +392,8 @@
 				F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */,
 				F5E4B0321A621E61006B4360 /* BuildingGraphicsFactory.swift in Sources */,
 				F592D9CB1A61B9EC00F0EC6D /* Terrain.swift in Sources */,
+				F5BB85DC1A7B455800A1EAA5 /* HungerNeed.swift in Sources */,
+				F5BB85DE1A7B5D8C00A1EAA5 /* FoodItem.swift in Sources */,
 				F58472331A664CF6008D1449 /* CharacterComponent.swift in Sources */,
 				F59061761A61F3C200BE68EA /* TerrainGraphicsFactory.swift in Sources */,
 				F52886701A5D00A200DF976F /* EntityFactory.swift in Sources */,
@@ -454,6 +510,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tarnish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -468,6 +525,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tarnish/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

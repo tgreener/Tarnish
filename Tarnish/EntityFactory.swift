@@ -12,15 +12,18 @@ protocol EntityFactory {
     func createBeardling() -> Entity
     func createBraidling() -> Entity
     func createNormalHouseBright() -> Entity
+    func createApple() -> Entity
 }
 
 class EntityFactoryImpl : EntityFactory {
     let graphics : GraphicsFactory
     let map: GameMapImpl
+    let items: ItemFactory
     
-    init(graphics: GraphicsFactory, map: GameMapImpl) {
+    init(graphics: GraphicsFactory, map: GameMapImpl, items: ItemFactory) {
         self.graphics = graphics
         self.map = map
+        self.items = items
     }
     
     func createCharacter(graphics : BeardlingGraphicComponent) -> Entity {
@@ -30,11 +33,10 @@ class EntityFactoryImpl : EntityFactory {
         ai.addListener(graphics)
         
         return EntityBuilder.entity()
-            .with(exampleComponent  : ExampleComponent())
             .with(graphicsComponent : graphics)
             .with(positionComponent : position)
             .with(physicalComponent : PhysicalComponentImpl(blocksPathing: true))
-            .with(characterComponent: nil)
+            .with(characterComponent: CharacterComponentImpl())
             .with(aiComponent: ai)
             .create()
     }
@@ -49,29 +51,32 @@ class EntityFactoryImpl : EntityFactory {
     
     func createNormalHouseBright() -> Entity {
         return EntityBuilder.entity()
-            .with(exampleComponent  : ExampleComponent())
             .with(graphicsComponent : self.graphics.createBuildingGraphic(BuildingTextureTypes.HouseNormalOrangeBright))
             .with(positionComponent : PositionComponentImpl(map: self.map))
             .with(physicalComponent : PhysicalComponentImpl(blocksPathing: true))
             .create()
     }
+    
+    func createApple() -> Entity {
+        return EntityBuilder.entity()
+            .with(graphicsComponent: graphics.createItemGraphic(ItemTextureType.Apple))
+            .with(positionComponent: PositionComponentImpl(map: self.map))
+            .with(physicalComponent: PhysicalComponentImpl(blocksPathing: false))
+            .with(itemComponet: items.createApple())
+            .create()
+    }
 }
 
 class EntityBuilder {
-    var example  : ExampleComponent?
     var graphic  : GraphicsComponent?
     var position : PositionComponent?
     var physical : PhysicalComponent?
     var character: CharacterComponent?
     var ai       : AIComponent?
+    var item     : ItemComponent?
     
     class func entity() -> EntityBuilder {
         return EntityBuilder()
-    }
-    
-    func with(exampleComponent ex: ExampleComponent) -> EntityBuilder{
-        example = ex
-        return self
     }
     
     func with(graphicsComponent g:GraphicsComponent) -> EntityBuilder {
@@ -99,12 +104,17 @@ class EntityBuilder {
         return self
     }
     
+    func with(itemComponet i: ItemComponent) -> EntityBuilder {
+        item = i
+        return self
+    }
+    
     func validate() -> Bool {
-        return example != nil && graphic != nil && position != nil && physical != nil
+        return graphic != nil && position != nil && physical != nil
     }
     
     func create() -> Entity {
         assert(validate(), "Entity validation failed!")
-        return Entity(exampleComponent: example!, graphics: graphic!, position: position!, physical: physical!, character: character, ai: ai)
+        return Entity(graphics: graphic!, position: position!, physical: physical!, character: character, ai: ai, item: item)
     }
 }

@@ -9,7 +9,7 @@
 import SpriteKit
 
 class PlayScene : BaseScene {
-    let mapSize : UInt = 10 // 64 should be max map size, I think
+    let mapSize : UInt = 8 // 64 should be max map size, I think
     var map : GameMap!
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
@@ -48,6 +48,9 @@ class PlayScene : BaseScene {
         beardlings.append(beardling1)
         beardlings.append(beardling2)
         
+        let apple = entityFactory.createApple()
+        apple.position.setTo(MapPosition(x: mapSize / 2, y: mapSize - 1, z: 0))
+        
         let building = entityFactory.createNormalHouseBright()
         building.position.setTo(MapPosition(x: mapSize / 2, y: mapSize / 2, z: 0))
         
@@ -61,13 +64,13 @@ class PlayScene : BaseScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-        let dt = currentTime - previousTime
+        let dt = previousTime < 0 ? 0.0 : currentTime - previousTime
         
         // AI Loop
         var claims : [MapPosition : [PathStepper]] = [MapPosition : [PathStepper]]()
         for beardling in beardlings {
             if let ai = beardling.ai {
-                ai.update(&claims)
+                ai.update(dt, claims: &claims)
             }
         }
         
@@ -87,18 +90,21 @@ class PlayScene : BaseScene {
     func loadData() {
         let mapTextures      = SKTexture(imageNamed: "micro_tileset.png")
         let terrainFactory   = TerrainGraphicsFactory (atlas: mapTextures)
-        let buildingFactory  = BuildingGraphicsFactory(atlas: mapTextures)
-        let beardlingFactory = BeardlingGraphicsFactory()
-        
         let terrainGenerator = TerrainGenerator(graphics: terrainFactory)
+        let itemFactory = ItemFactory()
         
-        graphicsFactory = GraphicsFactory(beardlingFactory: beardlingFactory, terrainFactory: terrainFactory, buildingFactory: buildingFactory)
+        graphicsFactory = GraphicsFactory(
+            beardlingFactory: BeardlingGraphicsFactory(),
+            terrainFactory: terrainFactory,
+            buildingFactory: BuildingGraphicsFactory(atlas: mapTextures),
+            itemsFactory: ItemGraphicsFactory())
         graphicsFactory.loadAllTextures()
         
         let mapImpl = GameMapImpl(size: mapSize, terrainGenerator: terrainGenerator)
         map = mapImpl
         
-        entityFactory = EntityFactoryImpl(graphics: graphicsFactory, map: mapImpl)
+        entityFactory = EntityFactoryImpl(graphics: graphicsFactory, map: mapImpl, items: itemFactory)
+        previousTime = -1.0
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

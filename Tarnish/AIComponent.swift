@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AIComponent  {
-    func update(inout claims: [MapPosition : [PathStepper]]) -> Void
+    func update(dt: NSTimeInterval, inout claims: [MapPosition : [PathStepper]]) -> Void
     func addListener(listener: AIComponentListener) -> Void
     
     var entity : Entity! { get set }
@@ -17,6 +17,8 @@ protocol AIComponent  {
 
 class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelegate {
     let notifier : Notifier<AIComponentListener> = Notifier<AIComponentListener>()
+    let needs : NeedManager = NeedManager()
+    
     let map : GameMap
     let pathFinder : Pathfinder!
     
@@ -41,7 +43,9 @@ class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelega
         }
     }
     
-    func update(inout claims: [MapPosition : [PathStepper]]) {
+    func update(dt: NSTimeInterval, inout claims: [MapPosition : [PathStepper]]) {
+        needs.update(dt)
+        
         if goal == nil {
             generateGoal()
             pathFinder.goTo(self.goal!)
