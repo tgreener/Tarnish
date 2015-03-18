@@ -50,7 +50,8 @@ class ItemGraphicsFactory {
         let result = GraphicNode(texture: tex)
         result.anchorPoint = CGPointZero
         result.setScale(0.5)
-
+        result.zPosition = 0.5
+        
         return result
     }
 }

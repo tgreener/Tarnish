@@ -9,12 +9,13 @@
 import SpriteKit
 
 class PlayScene : BaseScene {
-    let mapSize : UInt = 8 // 64 should be max map size, I think
+    let mapSize : UInt = 64 // 64 should be max map size, I think
     var map : GameMap!
     var graphicsFactory : GraphicsFactory!
     var entityFactory : EntityFactory!
     
     var beardlings = [Entity]()
+    let items = ItemManager()
     
     var previousTime : NSTimeInterval = 0
     
@@ -42,14 +43,15 @@ class PlayScene : BaseScene {
         braidling2.position.setTo(MapPosition(x: mapSize - 1, y: mapSize - 1, z: 0))
         
         beardlings.append(beardling)
-        beardlings.append(braidling)
-        beardlings.append(braidling1)
-        beardlings.append(braidling2)
-        beardlings.append(beardling1)
-        beardlings.append(beardling2)
+//        beardlings.append(braidling)
+//        beardlings.append(braidling1)
+//        beardlings.append(braidling2)
+//        beardlings.append(beardling1)
+//        beardlings.append(beardling2)
         
         let apple = entityFactory.createApple()
         apple.position.setTo(MapPosition(x: mapSize / 2, y: mapSize - 1, z: 0))
+        items.add(item: apple.item!)
         
         let building = entityFactory.createNormalHouseBright()
         building.position.setTo(MapPosition(x: mapSize / 2, y: mapSize / 2, z: 0))

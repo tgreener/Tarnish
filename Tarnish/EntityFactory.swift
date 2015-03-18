@@ -58,11 +58,14 @@ class EntityFactoryImpl : EntityFactory {
     }
     
     func createApple() -> Entity {
+        let position = PositionComponentImpl(map: self.map)
+        let apple = items.createApple(position)
+        
         return EntityBuilder.entity()
             .with(graphicsComponent: graphics.createItemGraphic(ItemTextureType.Apple))
-            .with(positionComponent: PositionComponentImpl(map: self.map))
+            .with(positionComponent: position)
             .with(physicalComponent: PhysicalComponentImpl(blocksPathing: false))
-            .with(itemComponet: items.createApple())
+            .with(itemComponet: apple)
             .create()
     }
 }

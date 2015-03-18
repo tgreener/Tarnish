@@ -10,9 +10,11 @@ import SpriteKit
 
 class ItemComponent : FoodItem {
     let foodComponent : FoodItemComponent?
+    weak var position : PositionComponent!
     
-    init(food: FoodItemComponent?) {
+    init(food: FoodItemComponent?, position: PositionComponent? = nil) {
         foodComponent = food
+        self.position = position
     }
     
     func isFood() -> Bool {

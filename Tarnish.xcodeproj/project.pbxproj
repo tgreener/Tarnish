@@ -19,6 +19,8 @@
 		F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53825691A5BB59B009E8984 /* MapSpace.swift */; };
 		F538256C1A5C3A5B009E8984 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256B1A5C3A5B009E8984 /* Entity.swift */; };
 		F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */; };
+		F54BE72E1A831A9D00A025AC /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54BE72D1A831A9D00A025AC /* ItemManager.swift */; };
+		F54BE7301A83223400A025AC /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54BE72F1A83223400A025AC /* List.swift */; };
 		F562AA5E1A620FA6002080F1 /* TerrainGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F562AA5D1A620FA6002080F1 /* TerrainGenerator.swift */; };
 		F56EB2A11A68A60600C8BDCC /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EB2A01A68A60600C8BDCC /* Notifier.swift */; };
 		F58472331A664CF6008D1449 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58472321A664CF6008D1449 /* CharacterComponent.swift */; };
@@ -30,6 +32,7 @@
 		F5A52B4E1A71E1DC00E1653E /* ItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */; };
 		F5A52B541A741B9B00E1653E /* items.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A52B531A741B9B00E1653E /* items.png */; };
 		F5A52B561A741BFE00E1653E /* ItemsGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A52B551A741BFE00E1653E /* ItemsGraphicsFactory.swift */; };
+		F5A989411AA1B07500DE191B /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A989401AA1B07500DE191B /* Goal.swift */; };
 		F5AC73C11A638D29008D2DC5 /* BuildingGraphicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */; };
 		F5BB85D91A7B44F500A1EAA5 /* NeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85D81A7B44F500A1EAA5 /* NeedManager.swift */; };
 		F5BB85DC1A7B455800A1EAA5 /* HungerNeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BB85DB1A7B455800A1EAA5 /* HungerNeed.swift */; };
@@ -61,6 +64,8 @@
 		F53825691A5BB59B009E8984 /* MapSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSpace.swift; sourceTree = "<group>"; };
 		F538256B1A5C3A5B009E8984 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F538256D1A5C3CC2009E8984 /* ExampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleComponent.swift; sourceTree = "<group>"; };
+		F54BE72D1A831A9D00A025AC /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
+		F54BE72F1A83223400A025AC /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		F562AA5D1A620FA6002080F1 /* TerrainGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerrainGenerator.swift; sourceTree = "<group>"; };
 		F56EB2A01A68A60600C8BDCC /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		F58472321A664CF6008D1449 /* CharacterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 		F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponent.swift; sourceTree = "<group>"; };
 		F5A52B531A741B9B00E1653E /* items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = items.png; sourceTree = "<group>"; };
 		F5A52B551A741BFE00E1653E /* ItemsGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsGraphicsFactory.swift; sourceTree = "<group>"; };
+		F5A989401AA1B07500DE191B /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsComponent.swift; sourceTree = "<group>"; };
 		F5BB85D81A7B44F500A1EAA5 /* NeedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedManager.swift; sourceTree = "<group>"; };
 		F5BB85DB1A7B455800A1EAA5 /* HungerNeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HungerNeed.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 				F5A52B4D1A71E1DC00E1653E /* ItemComponent.swift */,
 				F5BB85DD1A7B5D8C00A1EAA5 /* FoodItem.swift */,
 				F5BB85DF1A7B6A6000A1EAA5 /* ItemFactory.swift */,
+				F54BE72D1A831A9D00A025AC /* ItemManager.swift */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -202,6 +209,14 @@
 				F5AC73C01A638D29008D2DC5 /* BuildingGraphicsComponent.swift */,
 			);
 			name = Graphics;
+			sourceTree = "<group>";
+		};
+		F5A9893F1AA1B06500DE191B /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				F5A989401AA1B07500DE191B /* Goal.swift */,
+			);
+			name = Goals;
 			sourceTree = "<group>";
 		};
 		F5BB85DA1A7B451E00A1EAA5 /* Needs */ = {
@@ -276,6 +291,7 @@
 		F5F2024C1A675E8E00E143BA /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				F5A9893F1AA1B06500DE191B /* Goals */,
 				F5BB85DA1A7B451E00A1EAA5 /* Needs */,
 				F515C61C1A6807AC003BB084 /* AIComponent.swift */,
 				F5C13CAD1A6C667100A27392 /* Pathfinder.swift */,
@@ -298,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F202511A6767F300E143BA /* PriorityQueue.swift */,
+				F54BE72F1A83223400A025AC /* List.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -391,6 +408,9 @@
 				F52886741A619B1500DF976F /* BeardlingGraphicComponent.swift in Sources */,
 				F5C805F41A5BA44D00188814 /* AppDelegate.swift in Sources */,
 				F5E4B0321A621E61006B4360 /* BuildingGraphicsFactory.swift in Sources */,
+				F5A989411AA1B07500DE191B /* Goal.swift in Sources */,
+				F54BE72E1A831A9D00A025AC /* ItemManager.swift in Sources */,
+				F54BE7301A83223400A025AC /* List.swift in Sources */,
 				F592D9CB1A61B9EC00F0EC6D /* Terrain.swift in Sources */,
 				F5BB85DC1A7B455800A1EAA5 /* HungerNeed.swift in Sources */,
 				F5BB85DE1A7B5D8C00A1EAA5 /* FoodItem.swift in Sources */,

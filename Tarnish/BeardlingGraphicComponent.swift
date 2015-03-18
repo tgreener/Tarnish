@@ -36,6 +36,7 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
         self.runAction(idleAnimationAction, withKey: "BEARDLING_ANIMATION")
         self.anchorPoint = CGPointZero
         self.userInteractionEnabled = true
+        self.zPosition = 2.0
     }
     
     func createIdleAnimationAction() -> SKAction {

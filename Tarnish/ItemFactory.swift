@@ -9,8 +9,8 @@
 import Foundation
 
 class ItemFactory {
-    func createApple() -> ItemComponent {
+    func createApple(position: PositionComponent) -> ItemComponent {
         let foodComponent : FoodItemComponent = FoodItemComponent(val: 10, time: 5)
-        return ItemComponent(food: foodComponent)
+        return ItemComponent(food: foodComponent, position: position)
     }
 }

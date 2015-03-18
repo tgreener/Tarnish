@@ -11,8 +11,6 @@ import Foundation
 protocol AIComponent  {
     func update(dt: NSTimeInterval, inout claims: [MapPosition : [PathStepper]]) -> Void
     func addListener(listener: AIComponentListener) -> Void
-    
-    var entity : Entity! { get set }
 }
 
 class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelegate {
@@ -24,7 +22,6 @@ class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelega
     
     var goal : MapPosition?  // In the future, I'll need to make a system with more descriptive goal classes
     weak var positionComponent : PositionComponent!
-    weak var entity : Entity! = nil
     
     init(map: GameMap, positionComponent: PositionComponent) {
         self.positionComponent = positionComponent
