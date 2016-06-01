@@ -28,8 +28,8 @@ class TerrainGraphicsFactory {
     
     init(atlas: SKTexture) {
         self.terrainAtlas = atlas
-        let grassEmptyRect        = spriteSheetRect( 0, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
-        let grassDecoration1Rect  = spriteSheetRect( 1, 31, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
+        let grassEmptyRect        = spriteSheetRect( 0, y: 31, dimension: terrainTextureDimension, sheetWidth: terrainSheetWidth, sheetHeight: terrainSheetHeight)
+        let grassDecoration1Rect  = spriteSheetRect( 1, y: 31, dimension: terrainTextureDimension, sheetWidth: terrainSheetWidth, sheetHeight: terrainSheetHeight)
         
         terrainAtlasPositions = [
             TerrainTextureType.GrassEmpty       : grassEmptyRect,

@@ -39,7 +39,7 @@ struct MapSpace {
     }
     
     mutating func removeEntity(e : Entity) -> Void {
-        for var i = 0; i < entities.count; i++ {
+        for var i = 0; i < entities.count; i += 1 {
             if entities[i] === e {
                 entities.removeAtIndex(i)
                 break
@@ -69,7 +69,7 @@ struct MapSpace {
     }
 }
 
-struct MapPosition : Equatable, Hashable, Printable {
+struct MapPosition : Equatable, Hashable, CustomStringConvertible {
     let x : UInt
     let y : UInt
     let z : UInt
@@ -80,10 +80,7 @@ struct MapPosition : Equatable, Hashable, Printable {
         self.x = x
         self.y = y
         self.z = z
-        hashValue = 0
-        hashValue = hashValue | Int(x)
-        hashValue = hashValue | (Int(y) << 10)
-        hashValue = hashValue | (Int(z) << 20)
+        hashValue = ((0 | Int(x)) | (Int(y) << 10)) | (Int(z) << 20)
         
         description = "Map Position: (\(x), \(y), \(z))"
     }

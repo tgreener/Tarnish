@@ -27,8 +27,13 @@ class GameMapImpl : GameMap {
     let mapNode : MapNode
 
     init(size : UInt, terrainGenerator : TerrainGenerator) {
-        self.size = size
-        if self.size > 1024 { self.size = 1024 } // Capped to ensure all MapSpace hashes are unique (and performance, that big of a map is absurd!)
+        // Capped to ensure all MapSpace hashes are unique (and performance, that big of a map is absurd!)
+        if size > 1024 {
+            self.size = 1024
+        }
+        else {
+            self.size = size
+        }
         
         mapNode = MapNode(mapSize: self.size)
         
@@ -36,9 +41,9 @@ class GameMapImpl : GameMap {
         let arraySize = intSize * intSize // intSize, for z levels
         container = [MapSpace](count: arraySize, repeatedValue: MapSpace(position: MapPosition(x: 0, y: 0, z: 0), mapNode: self.mapNode))
         
-        for var z : UInt = 0; z < 1 /* size if I ever implement the z levels */; z++ {
-            for var y : UInt = 0; y < size; y++ {
-                for var x : UInt = 0; x < size; x++ {
+        for var z : UInt = 0; z < 1 /* size if I ever implement the z levels */; z += 1 {
+            for var y : UInt = 0; y < size; y += 1 {
+                for var x : UInt = 0; x < size; x += 1 {
                     let position : MapPosition = MapPosition(x: x, y: y, z: z)
                     self.container[getArrayIndex(position)] = MapSpace(position: position, mapNode: self.mapNode)
                     if z == UInt(0) {

@@ -25,6 +25,7 @@
 		F56EB2A11A68A60600C8BDCC /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EB2A01A68A60600C8BDCC /* Notifier.swift */; };
 		F58472331A664CF6008D1449 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58472321A664CF6008D1449 /* CharacterComponent.swift */; };
 		F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58472341A664D72008D1449 /* PhysicalComponent.swift */; };
+		F584CC731CF6247B003CC343 /* PriorityQueue2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC721CF6247B003CC343 /* PriorityQueue2.swift */; };
 		F59061761A61F3C200BE68EA /* TerrainGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59061751A61F3C200BE68EA /* TerrainGraphicsFactory.swift */; };
 		F59061781A61F44800BE68EA /* micro_tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = F59061771A61F44800BE68EA /* micro_tileset.png */; };
 		F592D9CB1A61B9EC00F0EC6D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */; };
@@ -47,6 +48,9 @@
 		F5C8061A1A5BA50D00188814 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806181A5BA50D00188814 /* BaseScene.swift */; };
 		F5C8061B1A5BA50D00188814 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C806191A5BA50D00188814 /* TitleScene.swift */; };
 		F5E4B0321A621E61006B4360 /* BuildingGraphicsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */; };
+		F5ECCC021AC9DF2300403B1B /* CharacterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCC011AC9DF2300403B1B /* CharacterAction.swift */; };
+		F5ECCC041AC9E09300403B1B /* MoveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCC031AC9E09300403B1B /* MoveAction.swift */; };
+		F5ECCC061ACA3CEC00403B1B /* MoveToGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCC051ACA3CEC00403B1B /* MoveToGoal.swift */; };
 		F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2024D1A675EAA00E143BA /* AStar.swift */; };
 		F5F202521A6767F300E143BA /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F202511A6767F300E143BA /* PriorityQueue.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +74,7 @@
 		F56EB2A01A68A60600C8BDCC /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		F58472321A664CF6008D1449 /* CharacterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		F58472341A664D72008D1449 /* PhysicalComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalComponent.swift; sourceTree = "<group>"; };
+		F584CC721CF6247B003CC343 /* PriorityQueue2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue2.swift; sourceTree = "<group>"; };
 		F59061751A61F3C200BE68EA /* TerrainGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerrainGraphicsFactory.swift; sourceTree = "<group>"; };
 		F59061771A61F44800BE68EA /* micro_tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micro_tileset.png; sourceTree = "<group>"; };
 		F592D9CA1A61B9EC00F0EC6D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
@@ -94,6 +99,9 @@
 		F5C806181A5BA50D00188814 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F5C806191A5BA50D00188814 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		F5E4B0311A621E61006B4360 /* BuildingGraphicsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingGraphicsFactory.swift; sourceTree = "<group>"; };
+		F5ECCC011AC9DF2300403B1B /* CharacterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterAction.swift; sourceTree = "<group>"; };
+		F5ECCC031AC9E09300403B1B /* MoveAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveAction.swift; sourceTree = "<group>"; };
+		F5ECCC051ACA3CEC00403B1B /* MoveToGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveToGoal.swift; sourceTree = "<group>"; };
 		F5F2024D1A675EAA00E143BA /* AStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
 		F5F202511A6767F300E143BA /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A989401AA1B07500DE191B /* Goal.swift */,
+				F5ECCC051ACA3CEC00403B1B /* MoveToGoal.swift */,
 			);
 			name = Goals;
 			sourceTree = "<group>";
@@ -288,9 +297,19 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		F5ECCC001AC9DF0100403B1B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECCC011AC9DF2300403B1B /* CharacterAction.swift */,
+				F5ECCC031AC9E09300403B1B /* MoveAction.swift */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
 		F5F2024C1A675E8E00E143BA /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				F5ECCC001AC9DF0100403B1B /* Actions */,
 				F5A9893F1AA1B06500DE191B /* Goals */,
 				F5BB85DA1A7B451E00A1EAA5 /* Needs */,
 				F515C61C1A6807AC003BB084 /* AIComponent.swift */,
@@ -315,6 +334,7 @@
 			children = (
 				F5F202511A6767F300E143BA /* PriorityQueue.swift */,
 				F54BE72F1A83223400A025AC /* List.swift */,
+				F584CC721CF6247B003CC343 /* PriorityQueue2.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -345,7 +365,9 @@
 		F5C805E61A5BA44D00188814 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Todd Greener";
 				TargetAttributes = {
 					F5C805ED1A5BA44D00188814 = {
@@ -393,8 +415,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F538256E1A5C3CC2009E8984 /* ExampleComponent.swift in Sources */,
+				F5ECCC021AC9DF2300403B1B /* CharacterAction.swift in Sources */,
 				F53825681A5BB4BF009E8984 /* Map.swift in Sources */,
 				F58472351A664D72008D1449 /* PhysicalComponent.swift in Sources */,
+				F584CC731CF6247B003CC343 /* PriorityQueue2.swift in Sources */,
 				F5F2024E1A675EAA00E143BA /* AStar.swift in Sources */,
 				F5A52B4E1A71E1DC00E1653E /* ItemComponent.swift in Sources */,
 				F5BB85E01A7B6A6000A1EAA5 /* ItemFactory.swift in Sources */,
@@ -415,6 +439,8 @@
 				F5BB85DC1A7B455800A1EAA5 /* HungerNeed.swift in Sources */,
 				F5BB85DE1A7B5D8C00A1EAA5 /* FoodItem.swift in Sources */,
 				F58472331A664CF6008D1449 /* CharacterComponent.swift in Sources */,
+				F5ECCC061ACA3CEC00403B1B /* MoveToGoal.swift in Sources */,
+				F5ECCC041AC9E09300403B1B /* MoveAction.swift in Sources */,
 				F59061761A61F3C200BE68EA /* TerrainGraphicsFactory.swift in Sources */,
 				F52886701A5D00A200DF976F /* EntityFactory.swift in Sources */,
 				F538256A1A5BB59B009E8984 /* MapSpace.swift in Sources */,
@@ -466,6 +492,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -532,6 +559,7 @@
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.toddgreener.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -547,6 +575,7 @@
 				INFOPLIST_FILE = Tarnish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.toddgreener.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;

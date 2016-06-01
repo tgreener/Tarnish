@@ -26,7 +26,7 @@ class ItemManager {
     
     func getClosest(to position: MapPosition, given closure: (ItemComponent)->Bool) -> ItemComponent? {
         let items = filter(over: closure)
-        var closestDistance = Double.infinity
+        let closestDistance = Double.infinity
         var closestItem : ItemComponent? = nil
         for item in items {
             if (position.distanceSquaredTo(item.position.mapPosition) < closestDistance) {

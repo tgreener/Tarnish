@@ -15,7 +15,7 @@ enum ItemTextureType {
 }
 
 class ItemGraphicsFactory {
-    let itemRects : [ItemTextureType : CGRect] = [ItemTextureType : CGRect](minimumCapacity: 3)
+    let itemRects : [ItemTextureType : CGRect]
     var itemTextures : [ItemTextureType : SKTexture] = [ItemTextureType : SKTexture](minimumCapacity: 3)
     let itemAtlas : SKTexture
     
@@ -26,9 +26,9 @@ class ItemGraphicsFactory {
     init() {
         itemAtlas = SKTexture(imageNamed: "items.png")
         
-        let cheeseRect : CGRect = spriteSheetRect(0, 0, itemTextureDimension, atlasWidth, atlasHeight)
-        let breadRect  : CGRect = spriteSheetRect(1, 0, itemTextureDimension, atlasWidth, atlasHeight)
-        let appleRect  : CGRect = spriteSheetRect(2, 0, itemTextureDimension, atlasWidth, atlasHeight)
+        let cheeseRect : CGRect = spriteSheetRect(0, y: 0, dimension: itemTextureDimension, sheetWidth: atlasWidth, sheetHeight: atlasHeight)
+        let breadRect  : CGRect = spriteSheetRect(1, y: 0, dimension: itemTextureDimension, sheetWidth: atlasWidth, sheetHeight: atlasHeight)
+        let appleRect  : CGRect = spriteSheetRect(2, y: 0, dimension: itemTextureDimension, sheetWidth: atlasWidth, sheetHeight: atlasHeight)
         
         itemRects = [
             ItemTextureType.Cheese : cheeseRect,

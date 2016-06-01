@@ -12,7 +12,7 @@ class TitleScene: BaseScene {
     
     var titleNode : SKLabelNode!
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let playScene : PlayScene = PlayScene()
         let view : SKView = self.view!
         view.presentScene(playScene)

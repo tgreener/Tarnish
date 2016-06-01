@@ -78,7 +78,7 @@ class GraphicNode : SKSpriteNode, GraphicsComponent {
     }
     
     func positionMovedTo(position: MapPosition, from: MapPosition, map: GameMap) {
-        self.runAction(SKAction.moveTo(map.convertToMapNodeSpace(position), duration: 0.6), {
+        self.runAction(SKAction.moveTo(map.convertToMapNodeSpace(position), duration: 0.6), completion: {
             self.notifyMovedTo(position)
         })
     }

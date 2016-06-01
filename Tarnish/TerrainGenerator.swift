@@ -17,8 +17,8 @@ class TerrainGenerator {
     
     func generateTerrainSpace() -> Terrain {
         let count : UInt = UInt(terrainGraphics.terrainTextures.count)
-        let randomIndex = Int(random(0, count))
-        let texture = terrainGraphics.terrainTextures.values.array[randomIndex]
+        let randomIndex = Int(random(0, maxVal: count))
+        let texture = Array(terrainGraphics.terrainTextures.values)[randomIndex]
         return Terrain(texture: texture)
     }
 }

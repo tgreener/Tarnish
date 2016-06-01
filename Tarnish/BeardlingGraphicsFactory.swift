@@ -27,10 +27,10 @@ class BeardlingGraphicsFactory {
     let braidlingAtlasPositions : [BeardlingTextureType: CGRect]
     
     init() {
-        let beardlingIdle1Rect = spriteSheetRect(0, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let beardlingIdle2Rect = spriteSheetRect(1, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let beardlingRun1Rect  = spriteSheetRect(2, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let beardlingRun2Rect  = spriteSheetRect(3, 1, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let beardlingIdle1Rect = spriteSheetRect(0, y: 1, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let beardlingIdle2Rect = spriteSheetRect(1, y: 1, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let beardlingRun1Rect  = spriteSheetRect(2, y: 1, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let beardlingRun2Rect  = spriteSheetRect(3, y: 1, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
         
         beardlingAtlasPositions = [
             BeardlingTextureType.Idle1 : beardlingIdle1Rect,
@@ -39,10 +39,10 @@ class BeardlingGraphicsFactory {
             BeardlingTextureType.Run2  : beardlingRun2Rect
         ]
         
-        let braidlingIdle1Rect = spriteSheetRect(0, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let braidlingIdle2Rect = spriteSheetRect(1, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let braidlingRun1Rect  = spriteSheetRect(2, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
-        let braidlingRun2Rect  = spriteSheetRect(3, 0, beardlingSpriteDimension, beardlingSheetWidth, beardlingSheetHeight)
+        let braidlingIdle1Rect = spriteSheetRect(0, y: 0, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let braidlingIdle2Rect = spriteSheetRect(1, y: 0, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let braidlingRun1Rect  = spriteSheetRect(2, y: 0, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
+        let braidlingRun2Rect  = spriteSheetRect(3, y: 0, dimension: beardlingSpriteDimension, sheetWidth: beardlingSheetWidth, sheetHeight: beardlingSheetHeight)
         
         braidlingAtlasPositions = [
             BeardlingTextureType.Idle1 : braidlingIdle1Rect,

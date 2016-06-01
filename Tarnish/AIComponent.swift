@@ -18,7 +18,7 @@ class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelega
     let needs : NeedManager = NeedManager()
     
     let map : GameMap
-    let pathFinder : Pathfinder!
+    var pathFinder : Pathfinder!
     
     var goal : MapPosition?  // In the future, I'll need to make a system with more descriptive goal classes
     weak var positionComponent : PositionComponent!
@@ -31,12 +31,12 @@ class AIComponentImpl : AIComponent, PositionComponentListener, PathfinderDelega
     
     func generateGoal() -> Void {
         while goal == nil || !map.mapSpaceAt(goal!).isPathable() {
-            let goalX = random(0, map.size)
-            let goalY = random(0, map.size)
+            let goalX = random(0, maxVal: map.size)
+            let goalY = random(0, maxVal: map.size)
             let goalZ : UInt = 0
             
             goal = MapPosition(x: goalX, y: goalY, z: goalZ)
-            println("Created goal: \(goal)")
+            print("Created goal: \(goal)")
         }
     }
     

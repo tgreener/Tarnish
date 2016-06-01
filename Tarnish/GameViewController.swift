@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let spriteView : SKView = self.view as SKView
+        let spriteView : SKView = self.view as! SKView
         spriteView.showsNodeCount = true
         spriteView.showsFPS = true
         spriteView.ignoresSiblingOrder = true

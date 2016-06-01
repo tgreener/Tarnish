@@ -11,8 +11,8 @@ import SpriteKit
 class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
     let idleTextures : [SKTexture]
     let runTextures  : [SKTexture]
-    let idleAnimationAction : SKAction!
-    let runAnimationAction  : SKAction!
+    var idleAnimationAction : SKAction!
+    var runAnimationAction  : SKAction!
     var currentAction : SKAction = SKAction() {
         didSet {
             if oldValue !== currentAction {
@@ -37,6 +37,10 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
         self.anchorPoint = CGPointZero
         self.userInteractionEnabled = true
         self.zPosition = 2.0
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func createIdleAnimationAction() -> SKAction {
@@ -74,7 +78,7 @@ class BeardlingGraphicComponent : GraphicNode, AIComponentListener {
 class BraidlingGraphicComponent : BeardlingGraphicComponent {
     override func createIdleAnimationAction() -> SKAction {
         return SKAction.runBlock({
-            let randomNumber : NSTimeInterval = NSTimeInterval(Float(random(5, 10)) * 0.5)
+            let randomNumber : NSTimeInterval = NSTimeInterval(Float(random(5, maxVal: 10)) * 0.5)
             let sequence : SKAction = SKAction.sequence([
                 SKAction.animateWithTextures(self.idleTextures, timePerFrame: randomNumber),
                 SKAction.runBlock({self.runAction(self.createIdleAnimationAction())})

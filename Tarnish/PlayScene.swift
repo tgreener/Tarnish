@@ -78,10 +78,10 @@ class PlayScene : BaseScene {
         
         // Resolve conflicts.
         // TODO: Make this way better
-        for (position, steppers) in claims {
+        for (_, steppers) in claims {
             steppers[0].step()
             
-            for var i = 1; i < steppers.count; i++ {
+            for var i = 1; i < steppers.count; i += 1 {
                 steppers[i].stop()
             }
         }
@@ -109,7 +109,7 @@ class PlayScene : BaseScene {
         previousTime = -1.0
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 //        let braidX = braidling.position.mapPosition.x
 //        let braidY = braidling.position.mapPosition.y
 //        

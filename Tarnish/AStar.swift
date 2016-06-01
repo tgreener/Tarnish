@@ -13,11 +13,28 @@ protocol AStar {
     func calculatePartialPath(iterations i: UInt) -> [MapPosition]?
 }
 
+struct MapPositionPriorityNode :Equatable {
+    let distance : Double
+    let position : MapPosition
+}
+
+func ==(lhs: MapPositionPriorityNode, rhs: MapPositionPriorityNode) -> Bool {
+    return lhs.position == rhs.position
+}
+
+func ==(lhs: MapPosition, rhs: MapPositionPriorityNode) -> Bool {
+    return lhs == rhs.position
+}
+
+func ==(lhs: MapPositionPriorityNode, rhs: MapPosition) -> Bool {
+    return lhs.position == rhs
+}
+
 class AStarImpl : AStar {
     let map : GameMap
     
     var closedSet : [MapPosition] = [MapPosition]()
-    var openSet   : PriorityQueue<Double, MapPosition> = PriorityQueue()
+    var openSet   : PriorityQueue<MapPositionPriorityNode> = PriorityQueue({ $0.distance < $1.distance })
     var positionBefore    : [MapPosition: MapPosition] = [MapPosition: MapPosition]()
     var knownDistance     : [MapPosition: Double] = [MapPosition: Double]()
     var estimatedDistance : [MapPosition: Double] = [MapPosition: Double]()
@@ -33,7 +50,7 @@ class AStarImpl : AStar {
         
         knownDistance[start] = 0
         estimatedDistance[start] = knownDistance[start]! + heuristic(start, goal: end)
-        openSet.push(estimatedDistance[start]!, item: start)
+        openSet.push(MapPositionPriorityNode(distance: estimatedDistance[start]!, position: start))
     }
     
     func heuristic(current: MapPosition, goal: MapPosition) -> Double {
@@ -58,23 +75,23 @@ class AStarImpl : AStar {
     func calculatePath() -> [MapPosition]? {
         while self.openSet.count > 0 {
             if let current = self.openSet.next() {
-                if current == self.goal {
-                    self.lastCalculatedPosition = current
+                if current.position == self.goal {
+                    self.lastCalculatedPosition = current.position
                     
                     return self.createPath()
                 }
-                self.closedSet.append(current)
+                self.closedSet.append(current.position)
                 
-                for position : MapPosition in self.map.getPathableNeighbors(current) {
-                    if contains(self.closedSet, position) { continue }
+                for position : MapPosition in self.map.getPathableNeighbors(current.position) {
+                    if self.closedSet.contains(position) { continue }
                     
-                    let possibleDistance : Double = self.knownDistance[current]! + 1 // Travel between all terrain squares is currently just 1
-                    if !self.openSet.contains(position) || self.knownDistance[position] > possibleDistance {
-                        self.positionBefore[position] = current
+                    let possibleDistance : Double = self.knownDistance[current.position]! + 1 // Travel between all terrain squares is currently just 1
+                    if !self.openSet.contains(MapPositionPriorityNode(distance: 0.0, position: position)) || self.knownDistance[position] > possibleDistance {
+                        self.positionBefore[position] = current.position
                         self.knownDistance[position]  = possibleDistance
                         self.estimatedDistance[position] = self.knownDistance[position]! + self.heuristic(position, goal: self.goal)
-                        if !self.openSet.contains(position) {
-                            self.openSet.push(self.estimatedDistance[position]!, item: position)
+                        if !self.openSet.contains(MapPositionPriorityNode(distance: 0.0, position: position)) {
+                            self.openSet.push(MapPositionPriorityNode(distance: estimatedDistance[position]!, position: position))
                         }
                     }
                 }
@@ -89,29 +106,29 @@ class AStarImpl : AStar {
         
         while self.openSet.count > 0 {
             if let current = self.openSet.next() {
-                if current == self.goal || count >= i {
-                    self.lastCalculatedPosition = current
+                if current.position == self.goal || count >= i {
+                    self.lastCalculatedPosition = current.position
                     
                     return self.createPath()
                 }
-                self.closedSet.append(current)
+                self.closedSet.append(current.position)
                 
-                for position : MapPosition in self.map.getPathableNeighbors(current) {
-                    if contains(self.closedSet, position) { continue }
+                for position : MapPosition in self.map.getPathableNeighbors(current.position) {
+                    if self.closedSet.contains(position) { continue }
                     
-                    let possibleDistance : Double = self.knownDistance[current]! + 1 // Travel between all terrain squares is currently just 1
-                    if !self.openSet.contains(position) || self.knownDistance[position] > possibleDistance {
-                        self.positionBefore[position] = current
+                    let possibleDistance : Double = self.knownDistance[current.position]! + 1 // Travel between all terrain squares is currently just 1
+                    if !self.openSet.contains(MapPositionPriorityNode(distance: 0.0, position: position)) || self.knownDistance[position] > possibleDistance {
+                        self.positionBefore[position] = current.position
                         self.knownDistance[position]  = possibleDistance
                         self.estimatedDistance[position] = self.knownDistance[position]! + self.heuristic(position, goal: self.goal)
-                        if !self.openSet.contains(position) {
-                            self.openSet.push(self.estimatedDistance[position]!, item: position)
+                        if !self.openSet.contains(MapPositionPriorityNode(distance: 0.0, position: position)) {
+                            self.openSet.push(MapPositionPriorityNode(distance: estimatedDistance[position]!, position: position))
                         }
                     }
                 }
             }
             
-            count++
+            count += 1
         }
         return nil
     }

@@ -28,7 +28,7 @@ enum BuildingTextureTypes {
 }
 
 class BuildingGraphicsFactory {
-    let buildingRects    : [BuildingTextureTypes: CGRect] = [BuildingTextureTypes: CGRect](minimumCapacity: 16)
+    let buildingRects    : [BuildingTextureTypes: CGRect]
     var buildingTextures : [BuildingTextureTypes: SKTexture] = [BuildingTextureTypes: SKTexture](minimumCapacity: 16)
     let buildingAtlas  : SKTexture
     
@@ -38,7 +38,7 @@ class BuildingGraphicsFactory {
     
     init(atlas: SKTexture) {
         buildingAtlas = atlas
-        let nnobRect = spriteSheetRect(26, 30, terrainTextureDimension, terrainSheetWidth, terrainSheetHeight)
+        let nnobRect = spriteSheetRect(26, y: 30, dimension: terrainTextureDimension, sheetWidth: terrainSheetWidth, sheetHeight: terrainSheetHeight)
         
         buildingRects = [
             BuildingTextureTypes.HouseNormalOrangeBright : nnobRect
