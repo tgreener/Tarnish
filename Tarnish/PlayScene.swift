@@ -43,11 +43,11 @@ class PlayScene : BaseScene {
         braidling2.position.setTo(MapPosition(x: mapSize - 1, y: mapSize - 1, z: 0))
         
         beardlings.append(beardling)
-//        beardlings.append(braidling)
-//        beardlings.append(braidling1)
-//        beardlings.append(braidling2)
-//        beardlings.append(beardling1)
-//        beardlings.append(beardling2)
+        beardlings.append(braidling)
+        beardlings.append(braidling1)
+        beardlings.append(braidling2)
+        beardlings.append(beardling1)
+        beardlings.append(beardling2)
         
         let apple = entityFactory.createApple()
         apple.position.setTo(MapPosition(x: mapSize / 2, y: mapSize - 1, z: 0))
